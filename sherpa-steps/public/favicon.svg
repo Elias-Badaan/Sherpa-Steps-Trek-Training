@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Sherpa Steps">
+  <rect width="32" height="32" rx="6" fill="#2B2D42"/>
+  <!-- back ridge -->
+  <path d="M2 26 L12 9 L20 22 L24 16 L30 26 Z" fill="#EAF4F8"/>
+  <!-- front accent peak -->
+  <path d="M12 9 L17 17.5 L7 17.5 Z" fill="#8ECAE6"/>
+  <!-- contour line -->
+  <path d="M2 26 Q 9 23 16 25 T 30 26" fill="none" stroke="#1C6E8C" stroke-width="1.4" opacity="0.9"/>
+</svg>

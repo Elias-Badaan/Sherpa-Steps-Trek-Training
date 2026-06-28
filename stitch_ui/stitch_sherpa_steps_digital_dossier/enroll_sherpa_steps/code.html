@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Enroll | Sherpa Steps Trek Training</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;600;700;800&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: { extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#89d0f1","on-surface": "#191c1f","on-surface-variant": "#46464d","tertiary": "#171928","on-error-container": "#93000a","secondary": "#0c6684","primary-container": "#2b2d42","tertiary-container": "#2b2d3e","on-background": "#191c1f","primary-fixed": "#e0e0fc","on-secondary-fixed": "#001f2a","tertiary-fixed-dim": "#c4c5db","surface-tint": "#5b5d74","surface-container-high": "#e6e8ec","surface-variant": "#e0e2e6","error": "#ba1a1a","secondary-fixed": "#bfe9ff","on-tertiary-container": "#9394a9","tertiary-fixed": "#e1e1f7","primary-fixed-dim": "#c4c4df","surface-container-highest": "#e0e2e6","error-container": "#ffdad6","surface-bright": "#f7f9fd","on-secondary": "#ffffff","outline": "#77767d","on-primary": "#ffffff","secondary-container": "#95dbfd","on-tertiary-fixed": "#181a2a","inverse-primary": "#c4c4df","inverse-on-surface": "#eff1f5","on-primary-fixed": "#181a2e","surface-dim": "#d8dade","primary": "#16182c","on-primary-container": "#9394ae","on-secondary-fixed-variant": "#004d65","on-tertiary": "#ffffff","on-tertiary-fixed-variant": "#444657","on-error": "#ffffff","inverse-surface": "#2d3134","outline-variant": "#c7c5cd","surface-container-lowest": "#ffffff","background": "#f7f9fd","surface-container": "#eceef2","on-secondary-container": "#00617f","on-primary-fixed-variant": "#43455b","surface-container-low": "#f2f4f8","surface": "#f7f9fd"
+            },
+            "borderRadius": { "DEFAULT": "0.25rem","lg": "0.5rem","xl": "0.75rem","full": "9999px" },
+            "spacing": { "margin-mobile": "16px","gutter": "24px","margin-desktop": "64px","rail-width": "48px","section-gap": "120px" },
+            "fontFamily": { "elevation-numeral": ["Saira Condensed"],"body-lg": ["\"Source Sans 3\""],"body-bold": ["\"Source Sans 3\""],"headline-md": ["Saira Condensed"],"headline-lg": ["Saira Condensed"],"headline-lg-mobile": ["Saira Condensed"],"display-xl": ["Saira Condensed"],"body-md": ["\"Source Sans 3\""],"label-caps": ["Saira Condensed"] },
+            "fontSize": {
+                    "elevation-numeral": ["12px", {"lineHeight": "12px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-bold": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "28px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "44px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["36px", {"lineHeight": "36px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "display-xl": ["72px", {"lineHeight": "64px", "letterSpacing": "0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["14px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}]
+            }
+        } },
+      }
+    </script>
+<style>
+        body { background-color: #f7f9fd; color: #191c1f; overflow-x: hidden; }
+        .topo-bg { opacity: 0.03; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 100 Q 100 50 200 100 T 400 100 M0 150 Q 100 100 200 150 T 400 150 M0 200 Q 100 150 200 200 T 400 200 M0 250 Q 100 200 200 250 T 400 250' stroke='%23000' fill='none' stroke-width='1'/%3E%3C/svg%3E"); }
+        /* Sharp, instrument-panel form fields */
+        .field { background:#ffffff; border:1px solid #c7c5cd; border-radius:0; padding:14px 16px; width:100%; font-family:"Source Sans 3"; font-size:16px; color:#191c1f; }
+        .field:focus { outline:none; border-color:#0c6684; box-shadow:0 0 0 2px rgba(12,102,132,0.25); }
+        .field::placeholder { color:#77767d; }
+    </style>
+</head>
+<body class="font-body-md text-body-md bg-surface">
+<header class="fixed top-0 left-0 w-full z-50 bg-surface border-b border-outline-variant/30 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 h-20">
+<div class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase tracking-tighter">Sherpa Steps</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="../the_12_week_program_sherpa_steps/code.html">Program</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="../the_altitude_room_sherpa_steps/code.html">Altitude Room</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="../the_summit_wall_sherpa_steps/code.html">Summit Wall</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="../coaches_method_sherpa_steps/code.html">Coaches</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="../faq_sherpa_steps/code.html">FAQ</a>
+</nav>
+<a href="code.html" class="bg-secondary text-on-secondary px-8 py-2 font-label-caps text-label-caps hover:bg-secondary-container transition-all active:scale-95">Enroll</a>
+</header>
+<aside class="fixed left-0 top-0 w-rail-width h-full flex-col items-center py-section-gap z-40 border-r border-outline-variant/30 md:flex hidden">
+<div class="absolute inset-y-0 left-1/2 w-px bg-outline-variant/30 -translate-x-1/2"></div>
+<div class="flex flex-col gap-32 relative z-10">
+<div class="flex flex-col items-center group cursor-pointer"><span class="font-elevation-numeral text-elevation-numeral text-primary font-bold scale-110">START</span><span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">flag</span></div>
+<div class="flex flex-col items-center group cursor-pointer opacity-50"><span class="font-elevation-numeral text-elevation-numeral text-outline">WK 6</span><span class="material-symbols-outlined text-[16px] text-outline">altitude</span></div>
+<div class="flex flex-col items-center group cursor-pointer opacity-50"><span class="font-elevation-numeral text-elevation-numeral text-outline">WK 12</span><span class="material-symbols-outlined text-[16px] text-outline">mountain_flag</span></div>
+</div>
+<div class="absolute bottom-12 rotate-90 origin-center whitespace-nowrap"><span class="font-label-caps text-[10px] tracking-widest text-outline uppercase">Back-Planned to Departure</span></div>
+</aside>
+<main class="pt-32 pb-section-gap ml-0 md:ml-rail-width">
+<div class="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop relative">
+<div class="topo-bg absolute -top-20 -left-40 w-[800px] h-[800px] z-0"></div>
+<!-- Header -->
+<section class="relative z-10 mb-12">
+<div class="inline-block border-l-4 border-secondary pl-6 mb-6">
+<span class="font-label-caps text-label-caps text-secondary block mb-2">ENROLLMENT</span>
+<h1 class="font-display-xl text-headline-lg-mobile md:text-display-xl text-primary uppercase leading-none">Tell Us<br/>The Mountain</h1>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">No commitment yet. Tell us the trek and the date, and we'll be honest about whether twelve weeks is enough runway.</p>
+</section>
+<!-- Form -->
+<form id="enroll-form" class="relative z-10 bg-surface-container-lowest border border-outline-variant p-6 md:p-10 space-y-6" novalidate>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2" for="name">Name</label>
+<input class="field" id="name" name="name" type="text" required placeholder="Your full name"/>
+</div>
+<div>
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2" for="email">Email</label>
+<input class="field" id="email" name="email" type="email" required placeholder="you@email.com"/>
+</div>
+<div>
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2" for="phone">Phone</label>
+<input class="field" id="phone" name="phone" type="tel" placeholder="(713) 000-0000"/>
+</div>
+<div>
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2" for="targetTrek">Target Trek</label>
+<select class="field" id="targetTrek" name="targetTrek" required>
+<option value="" disabled selected>Select your trek</option>
+<option>Everest Base Camp</option>
+<option>Kilimanjaro (Uhuru Peak)</option>
+<option>Annapurna Base Camp</option>
+<option>Inca Trail</option>
+<option>Other high-altitude trek</option>
+</select>
+</div>
+<div>
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2" for="departureDate">Departure Date</label>
+<input class="field" id="departureDate" name="departureDate" type="date" required/>
+</div>
+<div>
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2" for="currentFitnessLevel">Current Fitness Level</label>
+<select class="field" id="currentFitnessLevel" name="currentFitnessLevel" required>
+<option value="" disabled selected>Be honest — it sets your start</option>
+<option>Desk-bound — winded on a stairwell</option>
+<option>Weekend hiker / casual cardio</option>
+<option>Regularly active / trains 3x+ weekly</option>
+<option>Endurance athlete</option>
+</select>
+</div>
+</div>
+<div>
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-2" for="trainingNote">Training Note <span class="text-outline normal-case">(optional)</span></label>
+<textarea class="field" id="trainingNote" name="trainingNote" rows="4" placeholder="Injuries, prior altitude experience, the pack you'll carry, anything we should know."></textarea>
+</div>
+<button type="submit" class="w-full bg-primary text-on-primary py-4 font-label-caps text-label-caps hover:bg-primary-container transition-all active:scale-[0.99]">Submit Enrollment</button>
+<p class="font-body-md text-on-surface-variant text-center pt-2">The full 12-week program is <span class="font-bold text-primary">$1,290</span>. A coach will confirm pricing and your start date before anything is owed.</p>
+</form>
+<!-- Success state (hidden until submit) -->
+<section id="enroll-success" class="relative z-10 hidden bg-tertiary text-on-primary p-10 md:p-12 border border-primary text-center">
+<span class="material-symbols-outlined text-secondary-fixed text-[48px] mb-4" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-md text-white uppercase mb-4">You're in the queue.</h2>
+<p class="font-body-lg text-body-lg text-on-primary/85 max-w-xl mx-auto">A coach will reach out within two days to set your start date and back-plan the twelve weeks against your departure.</p>
+<a href="../home_sherpa_steps/code.html" class="inline-block mt-8 border-2 border-secondary-fixed-dim text-secondary-fixed-dim px-10 py-3 font-label-caps text-label-caps hover:bg-secondary-fixed-dim hover:text-tertiary transition-all">Back to Home</a>
+</section>
+</div>
+</main>
+<footer class="bg-primary text-on-primary w-full">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-12">
+<div><div class="font-headline-md text-headline-md text-primary-fixed mb-4">Sherpa Steps</div><p class="font-body-md text-on-primary-container opacity-80">High-altitude training laboratory in Houston, TX, dedicated to mountaineering excellence.</p></div>
+<div class="flex flex-col gap-2"><span class="font-label-caps text-label-caps text-secondary-container mb-2">Program</span><a class="text-on-primary-container hover:text-secondary-fixed transition-all" href="../the_12_week_program_sherpa_steps/code.html">12-Week Program</a><a class="text-on-primary-container hover:text-secondary-fixed transition-all" href="../the_altitude_room_sherpa_steps/code.html">Altitude Room</a><a class="text-on-primary-container hover:text-secondary-fixed transition-all" href="../the_summit_wall_sherpa_steps/code.html">Summit Wall</a></div>
+<div class="flex flex-col gap-2"><span class="font-label-caps text-label-caps text-secondary-container mb-2">Connect</span><a class="text-on-primary-container hover:text-secondary-fixed transition-all" href="#">@sherpasteps.houston</a><a class="text-on-primary-container hover:text-secondary-fixed transition-all" href="#">@summitwall</a></div>
+<div class="flex flex-col gap-2"><span class="font-label-caps text-label-caps text-secondary-container mb-2">Hours · Houston, TX</span><p class="text-on-primary-container">Mon–Fri 5:30am–9pm<br/>Sat 7am–2pm<br/>Closed Sunday</p></div>
+</div>
+<div class="border-t border-primary-container px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center text-[12px] text-on-primary-container/60 font-label-caps"><span>© 2024 Sherpa Steps Trek Training. Houston, TX.</span><div class="flex gap-6 mt-4 md:mt-0"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+</footer>
+<script>
+    (function () {
+        var form = document.getElementById('enroll-form');
+        var success = document.getElementById('enroll-success');
+        if (!form) return;
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (!form.checkValidity()) { form.reportValidity(); return; }
+            form.classList.add('hidden');
+            success.classList.remove('hidden');
+            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    })();
+</script>
+</body></html>

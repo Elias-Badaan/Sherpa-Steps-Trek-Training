@@ -1,0 +1,137 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const description =
+  "Inside the Sherpa Steps altitude room: a hypoxic tent room off I-10 that reduces the oxygen you breathe to simulate ~4,000m, so your body starts adapting before your flight does.";
+
+const railTicks = [
+  { label: "4,000m", active: true },
+  { label: "3,000m" },
+  { label: "1,500m" },
+  { label: "Houston" },
+];
+---
+
+<Layout
+  title="The Altitude Room | Sherpa Steps Trek Training"
+  description={description}
+  active="altitude-room"
+  railTicks={railTicks}
+  railCaption="Simulated ascent"
+  preloadImage="/images/altitude-room.webp"
+>
+  <main class="ml-0 pb-24 md:ml-[var(--spacing-rail)]">
+    <!-- Header band (dark) -->
+    <section class="bleed-rail relative overflow-hidden border-b border-line bg-dark text-on-dark">
+      <img
+        src="/images/altitude-room.webp"
+        alt="An athlete in a training mask on a treadmill inside the hypoxic altitude tent room"
+        width="1200"
+        height="670"
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover opacity-30"
+      />
+      <div class="absolute inset-0 bg-dark/75"></div>
+      <div class="topo-bg topo-bg-light absolute inset-0 opacity-[0.07]"></div>
+      <div class="relative z-10 mx-auto grid max-w-5xl grid-cols-1 items-center gap-10 px-4 py-24 md:grid-cols-2 md:px-16">
+        <div>
+          <span class="label-caps mb-4 block text-accent-hi">The altitude room</span>
+          <h1 class="font-display text-5xl font-extrabold uppercase leading-none text-white md:text-7xl">
+            Oxygen Is A Luxury. Train Without It.
+          </h1>
+          <p class="mt-6 max-w-md text-lg text-on-dark/80">
+            We reduce the oxygen you breathe to simulate about 4,000 meters. Your body starts the
+            adaptation process here, in a room off I-10, before your flight ever leaves the ground.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-px border border-white/15 bg-white/15">
+          <div class="bg-dark p-6">
+            <span class="label-caps mb-2 block text-accent-hi">Simulated altitude</span>
+            <div class="font-display text-4xl font-extrabold text-white">4,000m</div>
+          </div>
+          <div class="bg-dark p-6">
+            <span class="label-caps mb-2 block text-accent-hi">Effective O₂</span>
+            <div class="font-display text-4xl font-extrabold text-white">~12%</div>
+          </div>
+          <div class="bg-dark p-6">
+            <span class="label-caps mb-2 block text-accent-hi">Session length</span>
+            <div class="font-display text-4xl font-extrabold text-white">45–60m</div>
+          </div>
+          <div class="bg-dark p-6">
+            <span class="label-caps mb-2 block text-accent-hi">Phase</span>
+            <div class="font-display text-4xl font-extrabold text-white">Wk 9–12</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="mx-auto max-w-5xl px-4 md:px-16">
+      <!-- The science -->
+      <section class="band-reveal border-b border-line py-24">
+        <span class="label-caps mb-4 block text-accent">The science of adaptation</span>
+        <h2 class="mb-12 max-w-3xl font-display text-4xl font-bold uppercase text-primary md:text-5xl">
+          What thin air does to a body that's ready for it.
+        </h2>
+        <div class="grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-3">
+          {[
+            { t: "Lower oxygen, on purpose", d: "The room reduces the oxygen you breathe to roughly 12%, the equivalent of standing at ~4,000m — without leaving Houston." },
+            { t: "Your blood adapts", d: "Repeated exposure nudges your body toward producing more red blood cells and using oxygen more efficiently under effort." },
+            { t: "Adaptation before departure", d: "By the time you fly, the process that usually starts on day one of a trek has a head start. You arrive steadier." },
+          ].map((c) => (
+            <div class="bg-surface p-8 transition-colors hover:bg-canvas">
+              <h3 class="mb-3 font-display text-2xl font-bold uppercase text-primary">{c.t}</h3>
+              <p class="text-muted">{c.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Pull quote -->
+      <section class="band-reveal border-b border-line py-24">
+        <blockquote class="mx-auto max-w-3xl text-center font-display text-3xl font-bold uppercase leading-tight text-primary md:text-4xl">
+          “On the summit, your lungs will beg for air. In the altitude room, we teach them to ignore the request.”
+        </blockquote>
+      </section>
+
+      <!-- Honest note + oxygen sensor -->
+      <section class="band-reveal grid grid-cols-1 items-stretch gap-px border-b border-line bg-line py-0 md:grid-cols-2">
+        <div class="bg-surface p-8 md:p-12">
+          <span class="label-caps mb-4 block text-accent">Altitude-honest</span>
+          <p class="text-lg text-ink">
+            The altitude room is not a guarantee against altitude sickness — nothing is. What it
+            does is start the adaptation early and let us pair room time with a managed-effort plan.
+            Graduates consistently arrive steadier. We won't promise you a mountain; we'll prepare
+            you for one.
+          </p>
+        </div>
+        <div class="relative min-h-[280px] overflow-hidden bg-dark">
+          <img
+            src="/images/oxygen-sensor.webp"
+            alt="A professional oxygen-monitoring sensor reading 13.0% O₂ in the altitude room"
+            width="1000"
+            height="1000"
+            loading="lazy"
+            decoding="async"
+            class="absolute inset-0 h-full w-full object-cover"
+          />
+          <span class="label-caps absolute bottom-4 left-4 bg-accent px-3 py-1.5 text-white">
+            Live O₂ readout · ~4,000m
+          </span>
+        </div>
+      </section>
+    </div>
+
+    <!-- CTA -->
+    <section class="bg-primary text-on-dark">
+      <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-8 px-4 py-20 md:flex-row md:px-16">
+        <h2 class="max-w-md font-display text-3xl font-bold uppercase text-white md:text-4xl">
+          The room is part of the 12-week plan.
+        </h2>
+        <a href="/enroll" class="whitespace-nowrap bg-accent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-[var(--color-accent-hi)] hover:text-dark active:scale-95">
+          Enroll in the 12-week program
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>

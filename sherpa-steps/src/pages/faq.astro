@@ -1,0 +1,100 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const description =
+  "Answers on altitude, fitness level, scheduling, price, and trek-readiness for the Sherpa Steps 12-week trek training program in Houston.";
+
+const faqs = [
+  {
+    q: "I live at sea level and I'm not very fit. Is this for me?",
+    a: "Yes. Most of our cohort starts at a desk and gets winded on a stairwell in week one. The 12-week plan assumes flatlander legs and builds from base fitness up. What we need is twelve weeks of runway before your trek, not a marathon time.",
+  },
+  {
+    q: "Does the altitude room actually do anything?",
+    a: "It simulates the lower oxygen of about 4,000 meters by reducing the oxygen you breathe, so your body starts the adaptation process before your flight. It is not a guarantee against altitude sickness — nothing is — but graduates consistently arrive steadier, and we pair room time with a managed-effort plan.",
+  },
+  {
+    q: "How long before my trek should I start?",
+    a: "Twelve weeks is the runway the program is built around. Start sooner if you can; we can compress to ten weeks in a pinch, but below that we'll tell you honestly that the load and altitude phases get squeezed.",
+  },
+  {
+    q: "What treks do you train people for?",
+    a: "Everest Base Camp, Kilimanjaro, Annapurna Base Camp, Inca Trail, and similar multi-day high-altitude treks. Tell us your target on the enrollment form and we tailor the load and elevation targets to that route.",
+  },
+  {
+    q: "What's the price and what's included?",
+    a: "The full 12-week program is $1,290 and includes all coached stairwell sessions, programmed pack training, and altitude room access. It does not include your trek, gear, or flights — we train the body, you book the mountain.",
+  },
+  {
+    q: "Do I need my own weighted pack?",
+    a: "We have loaner packs and plates for every session. By the load phase we strongly recommend training in the exact pack you'll carry on the trail, and we'll help you fit and weight it.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const railTicks = [
+  { label: "Logistics", active: true },
+  { label: "Altitude" },
+  { label: "Fitness" },
+  { label: "Price" },
+];
+---
+
+<Layout
+  title="FAQ & Logistics | Sherpa Steps Trek Training"
+  description={description}
+  active="faq"
+  jsonLd={jsonLd}
+  railTicks={railTicks}
+  railCaption="Base camp knowledge"
+>
+  <main class="ml-0 pb-24 md:ml-[var(--spacing-rail)]">
+    <div class="relative mx-auto max-w-3xl px-4 pt-12 md:px-16">
+      <div class="topo-bg absolute -left-40 -top-20 h-[800px] w-[800px]"></div>
+
+      <section class="relative z-10 mb-16">
+        <div class="mb-6 inline-block border-l-4 border-accent pl-6">
+          <span class="label-caps mb-2 block text-accent">Logistics &amp; prep</span>
+          <h1 class="font-display text-5xl font-extrabold uppercase leading-none text-primary md:text-7xl">
+            Base Camp Knowledge
+          </h1>
+        </div>
+        <p class="max-w-2xl text-lg text-muted">
+          High-altitude trekking takes more than lung capacity. It takes a plan, an honest read on
+          your fitness, and twelve weeks of runway. Here's what we get asked most.
+        </p>
+      </section>
+
+      <section class="relative z-10 border-t border-line">
+        {faqs.map((f) => (
+          <details class="group border-b border-line">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-8 transition hover:bg-canvas">
+              <span class="font-display text-xl font-bold uppercase text-primary md:text-2xl">{f.q}</span>
+              <span class="font-display text-3xl leading-none text-accent transition-transform duration-300 group-open:rotate-45">+</span>
+            </summary>
+            <p class="max-w-2xl pb-8 leading-relaxed text-muted">{f.a}</p>
+          </details>
+        ))}
+      </section>
+
+      <section class="relative z-10 mt-16 flex flex-col items-center justify-between gap-6 bg-primary p-10 text-on-dark md:flex-row">
+        <div>
+          <h2 class="font-display text-2xl font-bold uppercase text-white">Still have questions?</h2>
+          <p class="mt-2 text-on-dark/80">Tell us the trek and the date — we'll be honest about the runway.</p>
+        </div>
+        <a href="/enroll" class="whitespace-nowrap bg-accent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-[var(--color-accent-hi)] hover:text-dark active:scale-95">
+          Enroll in the 12-week program
+        </a>
+      </section>
+    </div>
+  </main>
+</Layout>

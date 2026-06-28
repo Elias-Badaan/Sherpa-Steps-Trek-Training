@@ -1,0 +1,133 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getProgramPhases } from "../lib/cms";
+
+const phases = await getProgramPhases();
+
+const description =
+  "The Sherpa Steps 12-week program: three phases — base, load, then thin air — built around weighted stairwell intervals and altitude-room training. Full tuition $1,290.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: "The 12-Week Trek Training Program",
+  description,
+  provider: {
+    "@type": "ExerciseGym",
+    name: "Sherpa Steps Trek Training",
+    sameAs: "https://instagram.com/sherpasteps.houston",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "1290",
+    priceCurrency: "USD",
+    category: "Full 12-week tuition",
+  },
+  hasCourseInstance: phases.map((p) => ({
+    "@type": "CourseInstance",
+    name: p.phaseName,
+    courseWorkload: p.weeks,
+    description: p.focus,
+  })),
+};
+
+const railTicks = [
+  { label: "Wk 12", active: true },
+  { label: "Wk 8" },
+  { label: "Wk 4" },
+  { label: "Wk 1" },
+];
+---
+
+<Layout
+  title="The 12-Week Program | Sherpa Steps Trek Training"
+  description={description}
+  active="program"
+  jsonLd={jsonLd}
+  railTicks={railTicks}
+  railCaption="12-week ascent"
+>
+  <main class="ml-0 pb-24 md:ml-[var(--spacing-rail)]">
+    <div class="relative mx-auto max-w-5xl px-4 pt-12 md:px-16">
+      <div class="topo-bg absolute -left-40 -top-20 h-[800px] w-[800px]"></div>
+
+      <!-- Header -->
+      <section class="relative z-10 mb-16">
+        <div class="mb-6 inline-block border-l-4 border-accent pl-6">
+          <span class="label-caps mb-2 block text-accent">The 12-week program</span>
+          <h1 class="font-display text-5xl font-extrabold uppercase leading-none text-primary md:text-7xl">
+            Base, Load,<br />Then Thin Air
+          </h1>
+        </div>
+        <p class="max-w-2xl text-lg text-muted">
+          Twelve weeks. Three phases. In that order, for a reason. Each phase builds the body the
+          next one needs — first the legs, then the load, then the oxygen debt you'll meet on the
+          mountain.
+        </p>
+      </section>
+
+      <!-- Price band -->
+      <section class="topo-bg-light relative z-10 mb-20 flex flex-col items-start justify-between gap-6 border border-primary bg-dark p-8 text-on-dark md:flex-row md:items-center md:p-10">
+        <div>
+          <span class="label-caps mb-2 block text-accent-hi">Full 12-week tuition</span>
+          <div class="font-display text-6xl font-extrabold leading-none text-white">$1,290</div>
+        </div>
+        <p class="max-w-md text-on-dark/80">
+          Includes all coached stairwell sessions, programmed pack training, and altitude room
+          access. It does not include your trek, gear, or flights — we train the body, you book the
+          mountain.
+        </p>
+        <a href="/enroll" class="whitespace-nowrap bg-accent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-[var(--color-accent-hi)] hover:text-dark active:scale-95">
+          Enroll now
+        </a>
+      </section>
+
+      <!-- Phases (CMS) -->
+      <section class="relative z-10 space-y-px border border-line bg-line">
+        {phases.map((p, i) => (
+          <article class:list={["grid grid-cols-1 gap-6 p-8 md:grid-cols-12 md:p-12", i === 2 ? "bg-primary text-on-dark" : "bg-surface"]}>
+            <div class="md:col-span-3">
+              <span class:list={["label-caps mb-2 block", i === 2 ? "text-accent-hi" : "text-accent"]}>
+                Phase {String(i + 1).padStart(2, "0")}
+              </span>
+              <h2 class:list={["font-display text-3xl font-bold uppercase", i === 2 ? "text-white" : "text-primary"]}>{p.phaseName}</h2>
+              <span class:list={["label-caps", i === 2 ? "text-on-dark/70" : "text-muted"]}>{p.weeks}</span>
+            </div>
+            <div class="md:col-span-9">
+              <p class:list={["mb-6 text-lg", i === 2 ? "text-on-dark" : "text-ink"]}>{p.focus}</p>
+              <div class:list={["border-t pt-4", i === 2 ? "border-white/20" : "border-line"]}>
+                <span class:list={["label-caps mb-2 block", i === 2 ? "text-accent-hi" : "text-accent"]}>Sample session</span>
+                <p class:list={[i === 2 ? "text-on-dark/80" : "text-muted"]}>{p.sampleSession}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <!-- What's included -->
+      <section class="relative z-10 mt-20 grid grid-cols-1 gap-6 md:grid-cols-3">
+        {[
+          { t: "Coached Sessions", d: "Every stairwell session is programmed and coached, never a solo grind." },
+          { t: "Pack Training", d: "Loaner packs and plates for every session; we help you fit and weight your own." },
+          { t: "Altitude Room", d: "Hypoxic tent room access dialed to ~4,000m, paired with a managed-effort plan." },
+        ].map((c) => (
+          <div class="lift border border-line bg-surface p-6">
+            <h3 class="mb-2 font-display text-2xl font-bold uppercase text-primary">{c.t}</h3>
+            <p class="text-muted">{c.d}</p>
+          </div>
+        ))}
+      </section>
+
+      <!-- CTA -->
+      <section class="relative z-10 mt-20 flex flex-col items-center justify-between gap-8 bg-primary p-12 text-on-dark md:flex-row">
+        <div class="max-w-md">
+          <h2 class="mb-4 font-display text-3xl font-bold uppercase text-white">Twelve weeks is the runway.</h2>
+          <p class="text-on-dark/80">Tell us your departure date and we'll back-plan the training against it.</p>
+        </div>
+        <a href="/enroll" class="whitespace-nowrap bg-accent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-[var(--color-accent-hi)] hover:text-dark active:scale-95">
+          Enroll in the 12-week program
+        </a>
+      </section>
+    </div>
+  </main>
+</Layout>

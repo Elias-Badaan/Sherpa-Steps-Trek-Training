@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FAQ &amp; Logistics | Sherpa Steps Trek Training</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;600;700;800&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#89d0f1",
+                    "on-surface": "#191c1f",
+                    "on-surface-variant": "#46464d",
+                    "tertiary": "#171928",
+                    "on-error-container": "#93000a",
+                    "secondary": "#0c6684",
+                    "primary-container": "#2b2d42",
+                    "tertiary-container": "#2b2d3e",
+                    "on-background": "#191c1f",
+                    "primary-fixed": "#e0e0fc",
+                    "on-secondary-fixed": "#001f2a",
+                    "tertiary-fixed-dim": "#c4c5db",
+                    "surface-tint": "#5b5d74",
+                    "surface-container-high": "#e6e8ec",
+                    "surface-variant": "#e0e2e6",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#bfe9ff",
+                    "on-tertiary-container": "#9394a9",
+                    "tertiary-fixed": "#e1e1f7",
+                    "primary-fixed-dim": "#c4c4df",
+                    "surface-container-highest": "#e0e2e6",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f7f9fd",
+                    "on-secondary": "#ffffff",
+                    "outline": "#77767d",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#95dbfd",
+                    "on-tertiary-fixed": "#181a2a",
+                    "inverse-primary": "#c4c4df",
+                    "inverse-on-surface": "#eff1f5",
+                    "on-primary-fixed": "#181a2e",
+                    "surface-dim": "#d8dade",
+                    "primary": "#16182c",
+                    "on-primary-container": "#9394ae",
+                    "on-secondary-fixed-variant": "#004d65",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#444657",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2d3134",
+                    "outline-variant": "#c7c5cd",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#f7f9fd",
+                    "surface-container": "#eceef2",
+                    "on-secondary-container": "#00617f",
+                    "on-primary-fixed-variant": "#43455b",
+                    "surface-container-low": "#f2f4f8",
+                    "surface": "#f7f9fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "rail-width": "48px",
+                    "section-gap": "120px"
+            },
+            "fontFamily": {
+                    "elevation-numeral": ["Saira Condensed"],
+                    "body-lg": ["\"Source Sans 3\""],
+                    "body-bold": ["\"Source Sans 3\""],
+                    "headline-md": ["Saira Condensed"],
+                    "headline-lg": ["Saira Condensed"],
+                    "headline-lg-mobile": ["Saira Condensed"],
+                    "display-xl": ["Saira Condensed"],
+                    "body-md": ["\"Source Sans 3\""],
+                    "label-caps": ["Saira Condensed"]
+            },
+            "fontSize": {
+                    "elevation-numeral": ["12px", {"lineHeight": "12px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-bold": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "28px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "44px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["36px", {"lineHeight": "36px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "display-xl": ["72px", {"lineHeight": "64px", "letterSpacing": "0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["14px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7f9fd;
+            color: #191c1f;
+            overflow-x: hidden;
+        }
+
+        .elevation-rail-line {
+            background: linear-gradient(to bottom, transparent, #c7c5cd 10%, #c7c5cd 90%, transparent);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-active .accordion-content {
+            max-height: 500px;
+        }
+
+        .accordion-active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .topo-bg {
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 100 Q 100 50 200 100 T 400 100 M0 150 Q 100 100 200 150 T 400 150 M0 200 Q 100 150 200 200 T 400 200 M0 250 Q 100 200 200 250 T 400 250' stroke='%23000' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md bg-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface border-b border-outline-variant/30 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 h-20">
+<div class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase tracking-tighter">
+            Sherpa Steps
+        </div>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Program</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Altitude Room</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Summit Wall</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Coaches</a>
+<a class="text-secondary font-bold border-b-2 border-secondary pb-1 font-label-caps text-label-caps" href="#">FAQ</a>
+</nav>
+<button class="bg-primary text-on-primary px-8 py-2 font-label-caps text-label-caps hover:bg-primary-container transition-all active:scale-95">
+            Enroll
+        </button>
+</header>
+<!-- SideNavBar (Elevation Rail) -->
+<aside class="fixed left-0 top-0 w-rail-width h-full flex flex-col items-center py-section-gap z-40 border-r border-outline-variant/30 md:flex hidden">
+<div class="absolute inset-y-0 left-1/2 w-px bg-outline-variant/30 -translate-x-1/2"></div>
+<div class="flex flex-col gap-32 relative z-10">
+<div class="flex flex-col items-center group cursor-pointer opacity-50 hover:opacity-100 transition-opacity">
+<span class="font-elevation-numeral text-elevation-numeral text-outline group-hover:text-primary">8,000m</span>
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-primary">mountain_flag</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer opacity-50 hover:opacity-100 transition-opacity">
+<span class="font-elevation-numeral text-elevation-numeral text-outline group-hover:text-primary">7,000m</span>
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-primary">altitude</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer opacity-50 hover:opacity-100 transition-opacity">
+<span class="font-elevation-numeral text-elevation-numeral text-outline group-hover:text-primary">6,000m</span>
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-primary">altitude</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer opacity-50 hover:opacity-100 transition-opacity">
+<span class="font-elevation-numeral text-elevation-numeral text-outline group-hover:text-primary">5,000m</span>
+<span class="material-symbols-outlined text-[16px] text-outline group-hover:text-primary">altitude</span>
+</div>
+<div class="flex flex-col items-center group cursor-pointer">
+<span class="font-elevation-numeral text-elevation-numeral text-primary font-bold scale-110">3,000m</span>
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">altitude</span>
+</div>
+</div>
+<div class="absolute bottom-12 rotate-90 origin-center whitespace-nowrap">
+<span class="font-label-caps text-[10px] tracking-widest text-outline uppercase">Acclimatization Rail</span>
+</div>
+</aside>
+<main class="pt-32 pb-section-gap ml-0 md:ml-rail-width">
+<div class="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop relative">
+<!-- Topographic texture watermark -->
+<div class="topo-bg absolute -top-20 -left-40 w-[800px] h-[800px] z-0"></div>
+<!-- Page Header -->
+<section class="relative z-10 mb-24">
+<div class="inline-block border-l-4 border-secondary pl-6 mb-6">
+<span class="font-label-caps text-label-caps text-secondary block mb-2">LOGISTICS &amp; PREP</span>
+<h1 class="font-display-xl text-headline-lg-mobile md:text-display-xl text-primary uppercase leading-none">Base Camp Knowledge</h1>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    High-altitude trekking requires more than just lung capacity. It requires technical discipline, specific gear literacy, and physiological adaptation. Here is how we prepare you for the thin air.
+                </p>
+</section>
+<!-- FAQ Accordion Section -->
+<section class="relative z-10 space-y-0 border-t border-outline-variant">
+<!-- Q1 -->
+<div class="accordion-item border-b border-outline-variant group">
+<button class="w-full py-8 flex justify-between items-center text-left hover:bg-surface-container-low transition-colors px-4" onclick="toggleAccordion(this)">
+<span class="font-headline-md text-headline-md text-primary pr-8">Houston is at sea level and I'm not fit—is this for me?</span>
+<span class="accordion-icon material-symbols-outlined text-secondary transition-transform duration-300">add</span>
+</button>
+<div class="accordion-content">
+<div class="px-4 pb-8 text-on-surface-variant font-body-md leading-relaxed max-w-3xl">
+                            Absolutely. Most of our successful clients start exactly where you are. We specialize in taking "sea-level athletes" and building a specific cardiovascular base that mimics alpine endurance. Our program starts with Phase 1: Structural Integrity, focusing on lower-body durability before we even step into the altitude chamber.
+                        </div>
+</div>
+</div>
+<!-- Q2 -->
+<div class="accordion-item border-b border-outline-variant group">
+<button class="w-full py-8 flex justify-between items-center text-left hover:bg-surface-container-low transition-colors px-4" onclick="toggleAccordion(this)">
+<span class="font-headline-md text-headline-md text-primary pr-8">Does the altitude room actually do anything?</span>
+<span class="accordion-icon material-symbols-outlined text-secondary transition-transform duration-300">add</span>
+</button>
+<div class="accordion-content">
+<div class="px-4 pb-8 text-on-surface-variant font-body-md leading-relaxed max-w-3xl">
+                            It changes everything. By training in a hypoxic environment (12% oxygen, simulating ~4,000m), your body is forced to produce more red blood cells and increase mitochondrial efficiency. Training at sea level is good for your heart; training in the Altitude Room is good for your blood.
+                        </div>
+</div>
+</div>
+<!-- Q3 -->
+<div class="accordion-item border-b border-outline-variant group">
+<button class="w-full py-8 flex justify-between items-center text-left hover:bg-surface-container-low transition-colors px-4" onclick="toggleAccordion(this)">
+<span class="font-headline-md text-headline-md text-primary pr-8">How long before my trek should I start?</span>
+<span class="accordion-icon material-symbols-outlined text-secondary transition-transform duration-300">add</span>
+</button>
+<div class="accordion-content">
+<div class="px-4 pb-8 text-on-surface-variant font-body-md leading-relaxed max-w-3xl">
+                            The "Gold Standard" is 16 weeks. This allows for a 4-week base phase, an 8-week intensification phase in the chamber, and a 4-week summit push simulation. However, we have accelerated 8-week tracks for those with existing fitness foundations.
+                        </div>
+</div>
+</div>
+<!-- Q4 -->
+<div class="accordion-item border-b border-outline-variant group">
+<button class="w-full py-8 flex justify-between items-center text-left hover:bg-surface-container-low transition-colors px-4" onclick="toggleAccordion(this)">
+<span class="font-headline-md text-headline-md text-primary pr-8">What treks do you train for?</span>
+<span class="accordion-icon material-symbols-outlined text-secondary transition-transform duration-300">add</span>
+</button>
+<div class="accordion-content">
+<div class="px-4 pb-8 text-on-surface-variant font-body-md leading-relaxed max-w-3xl">
+                            Our protocols are tailored for the "Big Three": Everest Base Camp (Nepal), Kilimanjaro (Tanzania), and the Inca Trail (Peru). We also provide custom periodization for Mont Blanc, Aconcagua, and technical peaks in the Cascades.
+                        </div>
+</div>
+</div>
+<!-- Q5 -->
+<div class="accordion-item border-b border-outline-variant group">
+<button class="w-full py-8 flex justify-between items-center text-left hover:bg-surface-container-low transition-colors px-4" onclick="toggleAccordion(this)">
+<span class="font-headline-md text-headline-md text-primary pr-8">Price and what's included?</span>
+<span class="accordion-icon material-symbols-outlined text-secondary transition-transform duration-300">add</span>
+</button>
+<div class="accordion-content">
+<div class="px-4 pb-8 text-on-surface-variant font-body-md leading-relaxed max-w-3xl">
+                            Programs start at $299/month. This includes 3x weekly coached Altitude Room sessions, a personalized digital training plan, monthly lactate threshold testing, and a 15% discount on gear through our partners.
+                        </div>
+</div>
+</div>
+<!-- Q6 -->
+<div class="accordion-item border-b border-outline-variant group">
+<button class="w-full py-8 flex justify-between items-center text-left hover:bg-surface-container-low transition-colors px-4" onclick="toggleAccordion(this)">
+<span class="font-headline-md text-headline-md text-primary pr-8">Do I need my own pack?</span>
+<span class="accordion-icon material-symbols-outlined text-secondary transition-transform duration-300">add</span>
+</button>
+<div class="accordion-content">
+<div class="px-4 pb-8 text-on-surface-variant font-body-md leading-relaxed max-w-3xl">
+                            We provide weighted training vests and adjustable packs for in-facility sessions. However, we strongly recommend bringing your own pack during the final 4 weeks of training to ensure your suspension system and strap adjustments are perfectly dialed in before you hit the trail.
+                        </div>
+</div>
+</div>
+</section>
+<!-- Visual Break/Call to Action Card -->
+<section class="mt-24 bg-primary text-on-primary p-12 relative overflow-hidden">
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="max-w-md">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-md mb-4 text-white uppercase">Still have technical questions?</h2>
+<p class="text-on-primary-container font-body-md">Schedule a free 15-minute elevation strategy call with a lead coach to audit your current trek preparation.</p>
+</div>
+<button class="bg-secondary text-on-secondary px-10 py-4 font-label-caps text-label-caps hover:bg-secondary-container transition-all active:scale-95 whitespace-nowrap">
+                        Book Strategy Call
+                    </button>
+</div>
+<!-- Subtle graphic element -->
+<div class="absolute right-0 bottom-0 opacity-10 translate-y-1/4 translate-x-1/4">
+<span class="material-symbols-outlined text-[320px]">landscape</span>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-tertiary text-on-primary dark:text-on-tertiary w-full">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-12">
+<div class="col-span-1 md:col-span-1">
+<div class="font-headline-md text-headline-md text-primary-fixed mb-4">Sherpa Steps</div>
+<p class="font-body-md text-on-primary-container opacity-80">
+                    High-altitude training laboratory dedicated to mountaineering excellence.
+                </p>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-secondary-container mb-2">Resources</span>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Training Guides</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Gear Checklists</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Altitude Health</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-secondary-container mb-2">Connect</span>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Facebook</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Instagram</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">YouTube</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-all underline-offset-4 hover:underline" href="#">Newsletter</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-secondary-container mb-2">Location</span>
+<p class="text-on-primary-container">1200 Alpine Way<br/>Houston, TX 77001</p>
+</div>
+</div>
+<div class="border-t border-primary-container px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center text-[12px] text-on-primary-container/60 font-label-caps">
+<span>© 2024 Sherpa Steps Trek Training. Houston, TX.</span>
+<div class="flex gap-6 mt-4 md:mt-0">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<div class="fixed bottom-0 left-0 w-full z-50 flex items-center h-16 bg-primary md:hidden border-t-2 border-secondary shadow-lg">
+<button class="bg-secondary text-on-secondary w-full py-4 flex justify-center items-center gap-2 hover:bg-secondary-container transition-colors font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+            Enroll Now
+        </button>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        function toggleAccordion(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('accordion-active');
+            
+            // Close all first
+            document.querySelectorAll('.accordion-item').forEach(el => {
+                el.classList.remove('accordion-active');
+            });
+
+            // If it wasn't active, open it
+            if (!isActive) {
+                item.classList.add('accordion-active');
+            }
+        }
+
+        // Initialize first one open for visual cue
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstAccordion = document.querySelector('.accordion-item');
+            if(firstAccordion) firstAccordion.classList.add('accordion-active');
+        });
+
+        // Simple scroll parallax for topo background
+        window.addEventListener('scroll', () => {
+            const topo = document.querySelector('.topo-bg');
+            if (topo) {
+                const scrolled = window.pageYOffset;
+                topo.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
+        });
+    </script>
+</body></html>

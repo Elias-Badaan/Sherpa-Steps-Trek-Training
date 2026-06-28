@@ -1,0 +1,141 @@
+---
+import NavEnrollButton from "./NavEnrollButton.tsx";
+
+const { active } = Astro.props;
+
+const links = [
+  { href: "/program", label: "Program", key: "program" },
+  { href: "/altitude-room", label: "Altitude Room", key: "altitude-room" },
+  { href: "/summit-wall", label: "Summit Wall", key: "summit-wall" },
+  { href: "/coaches", label: "Coaches", key: "coaches" },
+  { href: "/faq", label: "FAQ", key: "faq" },
+];
+---
+
+<header
+  class="fixed top-0 left-0 z-50 flex h-20 w-full items-center justify-between border-b border-line/60 bg-surface px-4 md:px-16"
+>
+  <a href="/" class="font-display text-2xl font-extrabold uppercase tracking-tight text-primary md:text-3xl">
+    Sherpa Steps
+  </a>
+
+  <nav class="hidden gap-8 md:flex" aria-label="Primary">
+    {links.map((l) => (
+      <a
+        href={l.href}
+        class:list={[
+          "label-caps relative pb-1 transition-colors duration-200",
+          active === l.key ? "text-accent" : "text-muted hover:text-primary",
+          "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300 after:content-['']",
+          active === l.key ? "after:w-full" : "after:w-0 hover:after:w-full",
+        ]}
+        aria-current={active === l.key ? "page" : undefined}
+      >
+        {l.label}
+      </a>
+    ))}
+  </nav>
+
+  <div class="flex items-center gap-2">
+    <div class="hidden sm:block"><NavEnrollButton client:load /></div>
+    <!-- Mobile menu toggle -->
+    <button
+      id="nav-toggle"
+      type="button"
+      class="flex h-11 w-11 items-center justify-center text-primary md:hidden"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg id="nav-icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="7" x2="21" y2="7" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="17" x2="21" y2="17" />
+      </svg>
+      <svg id="nav-icon-close" class="hidden" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="5" y1="5" x2="19" y2="19" /><line x1="19" y1="5" x2="5" y2="19" />
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile menu panel -->
+<div
+  id="mobile-menu"
+  class="fixed left-0 top-20 z-40 hidden w-full border-b border-line bg-surface md:hidden"
+>
+  <nav class="flex flex-col px-4 py-2" aria-label="Mobile">
+    {links.map((l) => (
+      <a
+        href={l.href}
+        class:list={[
+          "label-caps border-b border-line/60 py-4 transition-colors",
+          active === l.key ? "text-accent" : "text-ink hover:text-accent",
+        ]}
+        aria-current={active === l.key ? "page" : undefined}
+      >
+        {l.label}
+      </a>
+    ))}
+    <a
+      href="/enroll"
+      class="mt-3 mb-2 bg-primary px-8 py-4 text-center font-display text-sm font-semibold uppercase tracking-[0.1em] text-white"
+    >
+      Enroll in the 12-week program
+    </a>
+  </nav>
+</div>
+
+<div class="h-20" aria-hidden="true"></div>
+
+<script>
+  const toggle = document.getElementById("nav-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("nav-icon-open");
+  const iconClose = document.getElementById("nav-icon-close");
+  if (toggle && menu && iconOpen && iconClose) {
+    const links = menu.querySelectorAll<HTMLAnchorElement>("a");
+    const isOpen = () => !menu.classList.contains("hidden");
+
+    const set = (open: boolean) => {
+      menu.classList.toggle("hidden", !open);
+      iconOpen.classList.toggle("hidden", open);
+      iconClose.classList.toggle("hidden", !open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      document.body.style.overflow = open ? "hidden" : ""; // lock background scroll
+      if (open) links[0]?.focus(); // move focus into the menu
+    };
+
+    toggle.addEventListener("click", () => set(!isOpen()));
+
+    // Close when a link is tapped
+    links.forEach((a) => a.addEventListener("click", () => set(false)));
+
+    // Escape closes and returns focus to the toggle
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isOpen()) {
+        set(false);
+        toggle.focus();
+      }
+    });
+
+    // Simple focus trap while open
+    menu.addEventListener("keydown", (e) => {
+      if (e.key !== "Tab" || !isOpen()) return;
+      const focusable = [toggle, ...Array.from(links)];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+
+    // Reset when resizing up to desktop
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) set(false);
+    });
+  }
+</script>

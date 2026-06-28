@@ -1,0 +1,89 @@
+---
+import "../styles/global.css";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import ElevationRail from "../components/ElevationRail.astro";
+import MobileEnrollStickyBar from "../components/MobileEnrollStickyBar.tsx";
+
+export interface Props {
+  title: string;
+  description: string;
+  active?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  railTicks?: { label: string; active?: boolean }[];
+  railCaption?: string;
+  preloadImage?: string;
+}
+
+const { title, description, active, jsonLd, railTicks, railCaption, preloadImage } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
+const ogImage = new URL("/images/og-image.jpg", Astro.site ?? Astro.url.origin).href;
+const jsonLdList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="mask-icon" href="/icon.svg" color="#2B2D42" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/saira-condensed-latin-800-normal.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/source-sans-3-latin-400-normal.woff2" crossorigin />
+    <meta name="generator" content={Astro.generator} />
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
+    <title>Sherpa Steps</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Sherpa Steps Trek Training" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+    {preloadImage && (
+      <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
+    )}
+    {jsonLdList.map((data) => (
+      <script type="application/ld+json" set:html={JSON.stringify(data)} />
+    ))}
+  </head>
+  <body>
+    <Nav active={active} />
+    <ElevationRail ticks={railTicks} caption={railCaption} />
+    <slot />
+    <Footer />
+    <MobileEnrollStickyBar client:load label="Enroll in the 12-week program" />
+
+    <script>
+      // Reveals are driven by native CSS scroll-driven animations where supported.
+      // Only fall back to an IntersectionObserver on browsers that lack them.
+      const cssDriven =
+        "CSS" in window && CSS.supports && CSS.supports("animation-timeline: view()");
+      if (!cssDriven) {
+        const bands = document.querySelectorAll<HTMLElement>(".band-reveal, .grow-bar");
+        if (!("IntersectionObserver" in window)) {
+          bands.forEach((b) => b.classList.add("in-view"));
+        } else {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) {
+                  e.target.classList.add("in-view");
+                  io.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.12 },
+          );
+          bands.forEach((b) => io.observe(b));
+        }
+      }
+    </script>
+  </body>
+</html>

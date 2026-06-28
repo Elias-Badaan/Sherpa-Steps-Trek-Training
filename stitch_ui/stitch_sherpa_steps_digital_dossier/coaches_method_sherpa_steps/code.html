@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Coaches &amp; Method | Sherpa Steps</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;600;700;800&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#89d0f1",
+                    "on-surface": "#191c1f",
+                    "on-surface-variant": "#46464d",
+                    "tertiary": "#171928",
+                    "on-error-container": "#93000a",
+                    "secondary": "#0c6684",
+                    "primary-container": "#2b2d42",
+                    "tertiary-container": "#2b2d3e",
+                    "on-background": "#191c1f",
+                    "primary-fixed": "#e0e0fc",
+                    "on-secondary-fixed": "#001f2a",
+                    "tertiary-fixed-dim": "#c4c5db",
+                    "surface-tint": "#5b5d74",
+                    "surface-container-high": "#e6e8ec",
+                    "surface-variant": "#e0e2e6",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#bfe9ff",
+                    "on-tertiary-container": "#9394a9",
+                    "tertiary-fixed": "#e1e1f7",
+                    "primary-fixed-dim": "#c4c4df",
+                    "surface-container-highest": "#e0e2e6",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f7f9fd",
+                    "on-secondary": "#ffffff",
+                    "outline": "#77767d",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#95dbfd",
+                    "on-tertiary-fixed": "#181a2a",
+                    "inverse-primary": "#c4c4df",
+                    "inverse-on-surface": "#eff1f5",
+                    "on-primary-fixed": "#181a2e",
+                    "surface-dim": "#d8dade",
+                    "primary": "#16182c",
+                    "on-primary-container": "#9394ae",
+                    "on-secondary-fixed-variant": "#004d65",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#444657",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2d3134",
+                    "outline-variant": "#c7c5cd",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#f7f9fd",
+                    "surface-container": "#eceef2",
+                    "on-secondary-container": "#00617f",
+                    "on-primary-fixed-variant": "#43455b",
+                    "surface-container-low": "#f2f4f8",
+                    "surface": "#f7f9fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "rail-width": "48px",
+                    "section-gap": "120px"
+            },
+            "fontFamily": {
+                    "elevation-numeral": ["Saira Condensed"],
+                    "body-lg": ["Source Sans 3"],
+                    "body-bold": ["Source Sans 3"],
+                    "headline-md": ["Saira Condensed"],
+                    "headline-lg": ["Saira Condensed"],
+                    "headline-lg-mobile": ["Saira Condensed"],
+                    "display-xl": ["Saira Condensed"],
+                    "body-md": ["Source Sans 3"],
+                    "label-caps": ["Saira Condensed"]
+            },
+            "fontSize": {
+                    "elevation-numeral": ["12px", {"lineHeight": "12px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-bold": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "28px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "44px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["36px", {"lineHeight": "36px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "display-xl": ["72px", {"lineHeight": "64px", "letterSpacing": "0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["14px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .topo-bg {
+            background-image: radial-gradient(circle at 2px 2px, #d2d7e2 1px, transparent 0);
+            background-size: 40px 40px;
+            opacity: 0.2;
+        }
+        .vertical-rail-line {
+            width: 1px;
+            background: linear-gradient(to bottom, #d2d7e2 0%, #1c6e8c 50%, #d2d7e2 100%);
+        }
+        .coach-card:hover .coach-img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+        .coach-img {
+            filter: grayscale(100%);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-on-surface docked full-width top-0 z-50 border-b border-outline-variant dark:border-outline sticky">
+<nav class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-full">
+<div class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary dark:text-primary-fixed uppercase tracking-tighter">
+                Sherpa Steps
+            </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps uppercase" href="#">Program</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps uppercase" href="#">Altitude Room</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps uppercase" href="#">Summit Wall</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-bold border-b-2 border-secondary pb-1 font-label-caps text-label-caps uppercase" href="#">Coaches</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps uppercase" href="#">FAQ</a>
+<button class="bg-primary-container text-on-primary px-6 py-2 font-label-caps text-label-caps uppercase tracking-widest active:scale-95 transition-transform">
+                    Enroll
+                </button>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+</header>
+<!-- SideNavBar (Elevation Rail) -->
+<aside class="fixed left-0 top-0 w-rail-width h-full flex flex-col items-center py-section-gap z-40 border-r border-outline-variant/30 bg-transparent hidden md:flex">
+<div class="flex flex-col gap-12 items-center h-full relative">
+<div class="absolute inset-y-0 w-px bg-outline-variant/30 left-1/2 -translate-x-1/2"></div>
+<div class="z-10 bg-surface py-2 flex flex-col items-center group cursor-pointer transition-all active:scale-95">
+<span class="material-symbols-outlined text-outline opacity-50 group-hover:opacity-100 transition-opacity">altitude</span>
+<span class="font-elevation-numeral text-elevation-numeral text-outline opacity-50 mt-1 uppercase">3,000m</span>
+</div>
+<div class="z-10 bg-surface py-2 flex flex-col items-center group cursor-pointer transition-all active:scale-95">
+<span class="material-symbols-outlined text-outline opacity-50 group-hover:opacity-100 transition-opacity">altitude</span>
+<span class="font-elevation-numeral text-elevation-numeral text-outline opacity-50 mt-1 uppercase">5,000m</span>
+</div>
+<div class="z-10 bg-surface py-2 flex flex-col items-center group cursor-pointer transition-all active:scale-110">
+<span class="material-symbols-outlined text-primary font-bold">altitude</span>
+<span class="font-elevation-numeral text-elevation-numeral text-primary font-bold mt-1 uppercase">6,000m</span>
+</div>
+<div class="z-10 bg-surface py-2 flex flex-col items-center group cursor-pointer transition-all active:scale-95">
+<span class="material-symbols-outlined text-outline opacity-50 group-hover:opacity-100 transition-opacity">altitude</span>
+<span class="font-elevation-numeral text-elevation-numeral text-outline opacity-50 mt-1 uppercase">7,000m</span>
+</div>
+<div class="z-10 bg-surface py-2 flex flex-col items-center group cursor-pointer transition-all active:scale-95">
+<span class="material-symbols-outlined text-outline opacity-50 group-hover:opacity-100 transition-opacity">mountain_flag</span>
+<span class="font-elevation-numeral text-elevation-numeral text-outline opacity-50 mt-1 uppercase">8,000m</span>
+</div>
+</div>
+</aside>
+<main class="md:pl-rail-width relative">
+<!-- Topographic Texture Watermark -->
+<div class="absolute inset-0 topo-bg -z-10 pointer-events-none"></div>
+<!-- Hero Section: Origin -->
+<section class="min-h-[716px] flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-24 border-b border-outline-variant">
+<div class="max-w-5xl mx-auto grid md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-7 space-y-8">
+<div class="inline-flex items-center gap-4 text-secondary uppercase font-label-caps text-label-caps tracking-[0.2em]">
+<span class="w-12 h-px bg-secondary"></span>
+                        Established 2018
+                    </div>
+<h1 class="font-display-xl text-display-xl uppercase text-primary leading-none">
+                        Started in a <br/><span class="text-outline">parking garage</span> off I-10.
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        Sherpa Steps wasn't born in a high-tech facility. It was forged in the humidity of Houston, using concrete ramps and steel stairs as our training ground. We knew if we could simulate the lung-burn here, we could survive anywhere.
+                    </p>
+</div>
+<div class="md:col-span-5 relative aspect-[4/5] overflow-hidden border border-outline-variant">
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+<img class="w-full h-full object-cover grayscale opacity-90 transition-transform duration-700 hover:scale-110" data-alt="Gritty black and white editorial photograph of a concrete parking garage ramp with long shadows. The atmosphere is industrial, moody, and raw, with a sense of quiet intensity. High contrast lighting emphasizes the rough texture of the pavement and the structural steel beams overhead. Minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtzMtlAXnqO0Vo7vbEAQYUEHrK_k8F3C9j8VOqjADvG_ah16qHTeuOgHQhG6f46qvYl92AjniQLUNG0wgdqedVyg3kvJBF8vntNJ8DSv0HGdaWJzt6UXFJ_veZHscmG7zXRJGWjjw2OjxySzK0VVeaXH5ZBMCjs68efdJfn07NGoZrWwKu2zXW18xK1jDwCi-4VYrm2zkjyU1z3sQmx2Dz_MDKyp4YSf02cmRtiPpJxUKd85tdloHBgcMKonXJit3KiYnX1EUyBvY"/>
+</div>
+</div>
+</section>
+<!-- Methodology: Data-Honest Training -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-white">
+<div class="max-w-6xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-outline-variant pb-8">
+<div class="max-w-2xl">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase mb-4">Methodical. <br/>Data-Honest. <br/>Aimed at the Summit.</h2>
+</div>
+<div class="font-label-caps text-label-caps text-outline uppercase tracking-widest text-right mb-2">
+                        System Protocol 01 // Intervals
+                    </div>
+</div>
+<div class="grid md:grid-cols-3 gap-gutter">
+<!-- Method 1 -->
+<div class="p-8 border border-outline-variant hover:border-primary transition-colors group">
+<div class="font-elevation-numeral text-display-xl text-surface-variant mb-6 group-hover:text-secondary-container transition-colors">01</div>
+<h3 class="font-headline-md text-headline-md text-primary uppercase mb-4">Stairwell Intervals</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                            Vertical displacement is the only metric that matters. We utilize multi-story stairwells with heavy packs to build specific muscular endurance that a treadmill simply cannot replicate.
+                        </p>
+</div>
+<!-- Method 2 -->
+<div class="p-8 border border-outline-variant hover:border-primary transition-colors group">
+<div class="font-elevation-numeral text-display-xl text-surface-variant mb-6 group-hover:text-secondary-container transition-colors">02</div>
+<h3 class="font-headline-md text-headline-md text-primary uppercase mb-4">Pack Training</h3>
+<p class="text-on-surface-variant leading-relaxed">
+                            Your body must adapt to the "Third Lung"—your rucksack. Training begins at 10% body weight and scales to 25%, focused on core stability and eccentric leg strength for the descent.
+                        </p>
+</div>
+<!-- Method 3 -->
+<div class="p-8 border border-outline-variant hover:border-primary transition-colors group bg-primary text-on-primary">
+<div class="font-elevation-numeral text-display-xl text-primary-container mb-6 group-hover:text-on-primary-container transition-colors">03</div>
+<h3 class="font-headline-md text-headline-md uppercase mb-4">Biometric Loyalty</h3>
+<p class="text-on-primary/70 leading-relaxed">
+                            We don't guess. We track heart rate variability, SpO2, and recovery metrics to ensure you're over-reaching without over-training. Precision is our primary safety tool.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Coaches Bios -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop">
+<div class="max-w-6xl mx-auto">
+<div class="mb-24 text-center">
+<span class="font-label-caps text-label-caps text-secondary uppercase block mb-4 tracking-[0.3em]">The Coaching Staff</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary uppercase">The Human Element</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-24">
+<!-- Coach Mark -->
+<div class="coach-card group">
+<div class="relative mb-8 overflow-hidden border border-outline-variant">
+<img class="coach-img w-full aspect-[3/4] object-cover" data-alt="Editorial portrait of Coach Mark, a rugged man in his late 40s with weathered features, wearing technical mountain gear. Desaturated tones with a cold, blue-ish tint. He has a focused, intense gaze. High-precision lighting with sharp shadows against a minimal gray background. Professional mountain guide aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEyaCNXhiRIrnNpXGdOFUZkaxCkH0Xy7p95MlYebjgYEYT6pBHzvZeuj_gEOss91T0rnSxkdE_-csRcvgK5LtGZAsWMisxdZm6_LMbjvSsPpGUY5rElx5wVKc3IW19D4URu3nRgpT3mXEhuzZ6kpOn8nwcXrQKVrnLfneHikux50MqC3B5B-_eQ8g3r6zm_f3gLFDY06JkTTTKE9Xf5hc7RNv8Sn8izK8ZXncwYtPgH239p5nXr-GrB6yBQPkxwHFPxHo5imXy_58"/>
+<div class="absolute bottom-0 left-0 bg-primary text-on-primary px-4 py-2 font-label-caps text-label-caps uppercase">Lead Expedition Coach</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-baseline border-b border-outline-variant pb-2">
+<h3 class="font-headline-md text-headline-md text-primary uppercase">Coach Mark</h3>
+<span class="font-elevation-numeral text-elevation-numeral text-outline uppercase">Expeditions: 14+</span>
+</div>
+<p class="text-on-surface-variant italic">"The mountain doesn't care about your resume. It cares about your lungs and your resolve. We train for the 2% of the trip that's pure suffering."</p>
+<p class="text-on-surface-variant">Mark founded Sherpa Steps after realizing most trekkers arrive at base camp physically prepared but metabolically broken. His focus is on long-duration metabolic efficiency.</p>
+</div>
+</div>
+<!-- Coach Elena -->
+<div class="coach-card group">
+<div class="relative mb-8 overflow-hidden border border-outline-variant">
+<img class="coach-img w-full aspect-[3/4] object-cover" data-alt="Professional athletic portrait of Coach Elena, a woman with athletic build and tied-back hair, wearing a high-performance training vest. Her expression is calm and disciplined. The style is desaturated, high-contrast, industrial minimalism. Shot in a gritty gym environment with steel bars in the blurred background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrdLObVZU01k34uGaZiK3IMAqed0x4i_a2xpU_hTDC2_RLfII9EVkWXnJc2snvVh0nwsXYbiq2AvSAGJnA_69jz-UnafQUfB-Lrnyb44lcox_ChKfHC6_JRD2klw54ECJJoz4zN2u6YQ6lnpeq6cKqxUwUjEvGzXHFe1HF6ceDVs2wIGW-uy2D317MIn7UuC46PYlF870TNVKZnXDy86cWwfRJYggBUQrO81h0O9wgx1HIfSQDQ9GgLvuJ__KRCladm3F0XMYzpp4"/>
+<div class="absolute bottom-0 left-0 bg-secondary text-on-secondary px-4 py-2 font-label-caps text-label-caps uppercase">Director of Physiology</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-baseline border-b border-outline-variant pb-2">
+<h3 class="font-headline-md text-headline-md text-primary uppercase">Coach Elena</h3>
+<span class="font-elevation-numeral text-elevation-numeral text-outline uppercase">Cert: CSCS / Alpine Phys</span>
+</div>
+<p class="text-on-surface-variant italic">"We don't build gym strength; we build altitude resilience. Every interval in that stairwell is a deposit into your survival bank."</p>
+<p class="text-on-surface-variant">Elena specializes in acclimatization protocols and load-carriage biomechanics. She ensures our 'data-honest' approach remains mathematically sound for every individual.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final Call to Action -->
+<section class="bg-primary text-on-primary py-24 px-margin-mobile md:px-margin-desktop text-center">
+<div class="max-w-3xl mx-auto space-y-8">
+<h2 class="font-display-xl text-headline-lg-mobile md:text-display-xl uppercase leading-none">Ready for the <br/><span class="text-secondary-container">Thin Air</span>?</h2>
+<p class="font-body-lg text-body-lg text-on-primary-container">
+                    Join the next training cohort. Spaces are limited to ensure direct coach interaction and precise biometric monitoring.
+                </p>
+<button class="bg-secondary text-white px-12 py-5 font-headline-md text-headline-md uppercase tracking-widest hover:bg-secondary-container hover:text-on-secondary-container transition-all active:scale-95">
+                    Start Your Training Plan
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-tertiary text-on-primary dark:text-on-tertiary w-full border-t border-primary-container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-12 w-full">
+<div class="space-y-4">
+<div class="font-headline-md text-headline-md text-primary-fixed uppercase tracking-tighter">Sherpa Steps</div>
+<p class="font-body-md text-body-md text-on-primary-container opacity-80">Methodical preparation for high-altitude summits. Houston-born, mountain-tested.</p>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps uppercase text-secondary-container mb-2">Connect</span>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors underline-offset-4 hover:underline" href="#">Facebook</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors underline-offset-4 hover:underline" href="#">Instagram</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors underline-offset-4 hover:underline" href="#">YouTube</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors underline-offset-4 hover:underline" href="#">Newsletter</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps uppercase text-secondary-container mb-2">Programs</span>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors" href="#">3,000m Base</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors" href="#">6,000m Intermediate</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors" href="#">8,000m Elite</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors" href="#">Custom Expeditions</a>
+</div>
+<div class="space-y-4">
+<span class="font-label-caps text-label-caps uppercase text-secondary-container block mb-2">Office</span>
+<p class="font-body-md text-body-md text-on-primary-container opacity-80">© 2024 Sherpa Steps Trek Training. Houston, TX.</p>
+</div>
+</div>
+</footer>
+<!-- Mobile BottomNavBar (Persistent Enroll Bar) -->
+<div class="fixed bottom-0 left-0 w-full z-50 flex items-center h-16 bg-primary dark:bg-tertiary border-t-2 border-secondary md:hidden">
+<div class="absolute top-0 left-0 w-1/3 h-0.5 bg-secondary"></div> <!-- Tiny progress bar mimic -->
+<a class="bg-secondary text-on-secondary w-full py-4 flex justify-center items-center gap-3 font-label-caps text-label-caps uppercase tracking-widest active:opacity-80" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+            Enroll Now
+        </a>
+</div>
+<script>
+        // Subtle micro-interaction for the elevation rail
+        window.addEventListener('scroll', () => {
+            const railItems = document.querySelectorAll('aside div div');
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            
+            // This is a decorative effect to simulate "elevation gained"
+            // The active state in HTML is fixed for "Coaches" page as per logic, 
+            // but we can add a visual cue on the rail line itself.
+        });
+
+        // Horizontal line micro-animation for method sections
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('translate-y-8');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-1000', 'translate-y-8', 'opacity-0');
+            observer.observe(el);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SummitWallGrid from "../components/SummitWallGrid.tsx";
+import { getSummitPhotos } from "../lib/cms";
+
+const photos = await getSummitPhotos();
+
+const description =
+  "The Summit Wall: graduates of Sherpa Steps who started on a Houston stairwell and stood on top — Everest Base Camp, Kilimanjaro, Annapurna and more, with trek, elevation, and graduation date.";
+
+const railTicks = [
+  { label: "5,895m", active: true },
+  { label: "5,364m" },
+  { label: "4,130m" },
+  { label: "Base" },
+];
+---
+
+<Layout
+  title="The Summit Wall | Sherpa Steps Trek Training"
+  description={description}
+  active="summit-wall"
+  railTicks={railTicks}
+  railCaption="Graduates on top"
+>
+  <main class="ml-0 pb-24 md:ml-[var(--spacing-rail)]">
+    <div class="relative mx-auto max-w-6xl px-4 pt-12 md:px-16">
+      <div class="topo-bg absolute -left-40 -top-20 h-[800px] w-[800px]"></div>
+
+      <section class="relative z-10 mb-16">
+        <div class="mb-6 inline-block border-l-4 border-accent pl-6">
+          <span class="label-caps mb-2 block text-accent">The summit wall</span>
+          <h1 class="font-display text-5xl font-extrabold uppercase leading-none text-primary md:text-7xl">
+            Every Photo<br />Started On A Stairwell
+          </h1>
+        </div>
+        <p class="max-w-2xl text-lg text-muted">
+          A wall of graduates who began at a Houston desk and finished on top. Each one trained
+          under load and in thin air before they ever booked a flight.
+        </p>
+      </section>
+
+      <section class="relative z-10">
+        <SummitWallGrid client:visible photos={photos} />
+      </section>
+
+      <section class="relative z-10 mt-20 flex flex-col items-center justify-between gap-8 bg-primary p-12 text-on-dark md:flex-row">
+        <h2 class="max-w-md font-display text-3xl font-bold uppercase text-white">
+          Your photo could be next on the wall.
+        </h2>
+        <a href="/enroll" class="whitespace-nowrap bg-accent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-[var(--color-accent-hi)] hover:text-dark active:scale-95">
+          Enroll in the 12-week program
+        </a>
+      </section>
+    </div>
+  </main>
+</Layout>

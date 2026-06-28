@@ -1,0 +1,102 @@
+---
+// Signature device: a scroll-reactive elevation rail down the left edge. Rendered
+// as a monochrome overlay with mix-blend-mode: difference, so it stays legible over
+// BOTH the light content sections and the full-bleed dark bands. Desktop only.
+const defaultTicks = [
+  { label: "5,364m" },
+  { label: "4,000m" },
+  { label: "2,000m" },
+  { label: "2m" },
+];
+const { ticks = defaultTicks } = Astro.props;
+---
+
+<aside
+  id="elev-rail"
+  class="fixed left-0 top-20 z-50 hidden h-[calc(100%-5rem)] w-[var(--spacing-rail)] flex-col items-center py-12 mix-blend-difference md:flex"
+  aria-hidden="true"
+>
+  <span class="mb-3 whitespace-nowrap font-display text-[9px] font-semibold uppercase tracking-[0.12em] text-white/70">Summit</span>
+
+  <div class="relative w-px flex-1 bg-white/30">
+    <div id="elev-fill" class="absolute bottom-0 left-0 w-full origin-bottom bg-white/80" style="height:0%"></div>
+    <div
+      id="elev-marker"
+      class="absolute left-1/2 h-2.5 w-2.5 -translate-x-1/2 translate-y-1/2 rounded-full bg-white ring-4 ring-white/30"
+      style="bottom:0%"
+    ></div>
+
+    <div class="pointer-events-none absolute inset-0">
+      {ticks.map((t, i) => (
+        <div
+          class="elev-tick absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-1"
+          data-i={i}
+          style={`top:${(i / (ticks.length - 1)) * 100}%`}
+        >
+          <span class="elev-tick-label font-display text-[11px] font-bold tracking-wide text-white/45 transition-all duration-300">
+            {t.label}
+          </span>
+          <span class="elev-tick-dash h-px w-4 bg-white/45 transition-all duration-300"></span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <span class="mt-3 whitespace-nowrap font-display text-[9px] font-semibold uppercase tracking-[0.12em] text-white/70">Sea&nbsp;lvl</span>
+</aside>
+
+<script>
+  const rail = document.getElementById("elev-rail");
+  const fill = document.getElementById("elev-fill");
+  const marker = document.getElementById("elev-marker");
+  const ticks = Array.from(document.querySelectorAll<HTMLElement>(".elev-tick"));
+
+  if (rail && fill && marker && ticks.length) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce) {
+      fill.style.transition = "height 0.35s cubic-bezier(0.22, 1, 0.36, 1)";
+      marker.style.transition = "bottom 0.35s cubic-bezier(0.22, 1, 0.36, 1)";
+    }
+
+    const n = ticks.length;
+    let queued = false;
+
+    const update = () => {
+      queued = false;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
+      const pct = (progress * 100).toFixed(2);
+      fill.style.height = pct + "%";
+      marker.style.bottom = pct + "%";
+
+      const active = Math.round((1 - progress) * (n - 1));
+      ticks.forEach((tick, i) => {
+        const label = tick.querySelector<HTMLElement>(".elev-tick-label");
+        const dash = tick.querySelector<HTMLElement>(".elev-tick-dash");
+        const on = i === active;
+        if (label) {
+          label.classList.toggle("text-white", on);
+          label.classList.toggle("scale-110", on);
+          label.classList.toggle("text-white/45", !on);
+        }
+        if (dash) {
+          dash.classList.toggle("bg-white", on);
+          dash.classList.toggle("w-6", on);
+          dash.classList.toggle("bg-white/45", !on);
+          dash.classList.toggle("w-4", !on);
+        }
+      });
+    };
+
+    const onScroll = () => {
+      if (!queued) {
+        queued = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    update();
+  }
+</script>

@@ -1,0 +1,133 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MapFacade from "../components/MapFacade.astro";
+import { getStoryBlock } from "../lib/cms";
+
+const story = await getStoryBlock();
+const storyParagraphs = (story?.body ?? "").split(/\n\n+/).filter(Boolean);
+
+const description =
+  "Meet the coaches behind Sherpa Steps and the stairwell-and-pack training philosophy — built in a Houston parking garage by people who have been short of breath at altitude.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  name: "Sherpa Steps Trek Training",
+  description,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Houston",
+    addressRegion: "TX",
+    addressCountry: "US",
+  },
+  openingHours: ["Mo-Fr 05:30-21:00", "Sa 07:00-14:00"],
+  priceRange: "$$",
+};
+
+const coaches = [
+  { name: "Coach Dev Sharma", role: "Founder · Lead Coach", img: "/images/coach-dev.webp", bio: "Climbed to short-of-breath at altitude more than once, then built a way to prepare for it at sea level. Times every flight, logs every heart rate." },
+  { name: "Coach Renee Okonkwo", role: "Altitude & Physiology", img: "/images/coach-renee.webp", bio: "Runs the hypoxic room and the managed-effort plans. Believes the blood adapts in the room so the legs can focus on the trail." },
+  { name: "Coach Marco Ibarra", role: "Loaded Strength", img: "/images/coach-marco.webp", bio: "Owns the load phase — the pack, the plates, the eccentric work for the descents your knees will thank you for." },
+];
+---
+
+<Layout
+  title="Coaches & Method | Sherpa Steps Trek Training"
+  description={description}
+  active="coaches"
+  jsonLd={jsonLd}
+>
+  <main class="ml-0 pb-24 md:ml-[var(--spacing-rail)]">
+    <div class="relative mx-auto max-w-5xl px-4 pt-12 md:px-16">
+      <div class="topo-bg absolute -left-40 -top-20 h-[800px] w-[800px]"></div>
+
+      <!-- Origin story (CMS StoryBlock) -->
+      <section class="band-reveal relative z-10 mb-20">
+        <div class="mb-6 inline-block border-l-4 border-accent pl-6">
+          <span class="label-caps mb-2 block text-accent">Coaches &amp; method</span>
+          <h1 class="font-display text-5xl font-extrabold uppercase leading-none text-primary md:text-7xl">
+            {story?.heading ?? "Started In A Parking Garage Off I-10"}
+          </h1>
+        </div>
+        <div class="max-w-3xl space-y-6">
+          {storyParagraphs.map((para) => (
+            <p class="text-lg text-muted">{para}</p>
+          ))}
+        </div>
+      </section>
+
+      <!-- The method -->
+      <section class="band-reveal relative z-10 mb-20 border-t border-line pt-16">
+        <span class="label-caps mb-4 block text-accent">The method</span>
+        <div class="grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-3">
+          {[
+            { t: "Stairwell volume", d: "We climb. Unloaded at first, then loaded — the closest thing Houston has to a mountain is a 40-story stairwell at 6am." },
+            { t: "Trained under load", d: "The pack you'll carry on the trail is the pack you train with. By the load phase, the weight is the point." },
+            { t: "Managed oxygen debt", d: "The altitude room teaches your body to work with less air, on a plan that keeps effort honest." },
+          ].map((c) => (
+            <div class="bg-surface p-8 transition-colors hover:bg-canvas">
+              <h3 class="mb-3 font-display text-2xl font-bold uppercase text-primary">{c.t}</h3>
+              <p class="text-muted">{c.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Coaches -->
+      <section class="band-reveal relative z-10">
+        <span class="label-caps mb-8 block text-accent">The human element</span>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {coaches.map((c) => (
+            <div class="lift group flex flex-col border border-line bg-surface">
+              <div class="relative aspect-[4/5] overflow-hidden bg-dark">
+                <img
+                  src={c.img}
+                  alt={`Portrait of ${c.name}`}
+                  width="640"
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                  class="zoom h-full w-full object-cover"
+                />
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-dark/90 to-transparent p-6">
+                  <span class="font-display text-2xl font-bold uppercase text-white">{c.name}</span>
+                </div>
+              </div>
+              <div class="p-6">
+                <span class="label-caps mb-3 block text-accent">{c.role}</span>
+                <p class="text-muted">{c.bio}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Location (deferred map facade) -->
+      <section class="band-reveal relative z-10 mt-20 border-t border-line pt-16">
+        <span class="label-caps mb-4 block text-accent">Find us</span>
+        <h2 class="mb-6 font-display text-3xl font-bold uppercase text-primary md:text-4xl">
+          The stairwell is off I-10
+        </h2>
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div class="md:col-span-1">
+            <p class="text-muted">1200 Alpine Way<br />Houston, TX 77001</p>
+            <p class="mt-4 text-muted">Mon–Fri 5:30am–9pm<br />Sat 7am–2pm<br />Closed Sunday</p>
+          </div>
+          <div class="md:col-span-2">
+            <MapFacade query="1200 Alpine Way, Houston, TX 77001" label="Sherpa Steps · Houston, TX" />
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="relative z-10 mt-20 flex flex-col items-center justify-between gap-8 bg-primary p-12 text-on-dark md:flex-row">
+        <h2 class="max-w-md font-display text-3xl font-bold uppercase text-white">
+          See the plan these coaches built.
+        </h2>
+        <a href="/program" class="whitespace-nowrap border-2 border-accent-hi px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.1em] text-accent-hi transition hover:bg-accent-hi hover:text-dark">
+          See the program
+        </a>
+      </section>
+    </div>
+  </main>
+</Layout>

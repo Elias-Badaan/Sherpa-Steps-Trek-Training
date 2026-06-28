@@ -1,0 +1,44 @@
+---
+// Deferred map facade (spec: "Map of the gym location loaded as a static image
+// facade that swaps to interactive on click"). No iframe/JS map until tapped.
+const { query = "1200 Alpine Way, Houston, TX 77001", label = "Sherpa Steps · Houston, TX" } = Astro.props;
+const src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+---
+
+<div
+  class="map-facade relative aspect-[16/9] w-full overflow-hidden border border-line bg-dark"
+  data-src={src}
+>
+  <div class="topo-bg topo-bg-light absolute inset-0 opacity-[0.14]"></div>
+  <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8ECAE6" stroke-width="2" aria-hidden="true">
+      <path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10z" />
+      <circle cx="12" cy="11" r="2.2" fill="#8ECAE6" stroke="none" />
+    </svg>
+    <span class="font-display text-lg font-bold uppercase tracking-wide text-white">{label}</span>
+    <button
+      type="button"
+      class="map-facade-btn bg-accent px-7 py-3 font-display text-sm font-semibold uppercase tracking-[0.1em] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--color-accent-hi)] hover:text-dark active:scale-95"
+      aria-label="Load interactive map"
+    >
+      Load interactive map
+    </button>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".map-facade").forEach((el) => {
+    const btn = el.querySelector(".map-facade-btn");
+    const src = el.dataset.src;
+    btn?.addEventListener("click", () => {
+      if (!src) return;
+      const iframe = document.createElement("iframe");
+      iframe.src = src;
+      iframe.loading = "lazy";
+      iframe.title = "Map of the Sherpa Steps gym";
+      iframe.referrerPolicy = "no-referrer-when-downgrade";
+      iframe.className = "absolute inset-0 h-full w-full border-0";
+      el.replaceChildren(iframe);
+    });
+  });
+</script>

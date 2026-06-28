@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+import EnrollmentForm from "../components/EnrollmentForm.tsx";
+
+const description =
+  "Enroll in the Sherpa Steps 12-week trek training program. Tell us your target trek and departure date — no commitment yet, and we'll be honest about whether twelve weeks is enough runway.";
+
+const railTicks = [
+  { label: "Start", active: true },
+  { label: "Wk 6" },
+  { label: "Wk 12" },
+];
+---
+
+<Layout
+  title="Enroll | Sherpa Steps Trek Training"
+  description={description}
+  active="enroll"
+  railTicks={railTicks}
+  railCaption="Back-planned to departure"
+>
+  <main class="ml-0 pb-24 md:ml-[var(--spacing-rail)]">
+    <div class="relative mx-auto max-w-3xl px-4 pt-12 md:px-16">
+      <div class="topo-bg absolute -left-40 -top-20 h-[800px] w-[800px]"></div>
+
+      <section class="relative z-10 mb-12">
+        <div class="mb-6 inline-block border-l-4 border-accent pl-6">
+          <span class="label-caps mb-2 block text-accent">Enrollment</span>
+          <h1 class="font-display text-5xl font-extrabold uppercase leading-none text-primary md:text-7xl">
+            Tell Us<br />The Mountain
+          </h1>
+        </div>
+        <p class="max-w-2xl text-lg text-muted">
+          No commitment yet. Tell us the trek and the date, and we'll be honest about whether twelve
+          weeks is enough runway.
+        </p>
+      </section>
+
+      <EnrollmentForm client:idle />
+    </div>
+  </main>
+</Layout>

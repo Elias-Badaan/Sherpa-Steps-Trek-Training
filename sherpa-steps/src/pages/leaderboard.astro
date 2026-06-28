@@ -1,0 +1,141 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const description =
+  "The Sherpa Steps elevation-gained leaderboard — total vertical climbed by current trainees on the stairwell and in the altitude room this cohort.";
+
+// Bonus feature: elevation-gained leaderboard for current trainees.
+const trainees = [
+  { name: "M. Thorne", trek: "Aconcagua", feet: 24500 },
+  { name: "S. Nakamura", trek: "Everest BC", feet: 22800 },
+  { name: "J. Henderson", trek: "Kilimanjaro", feet: 19450 },
+  { name: "L. Petrov", trek: "Annapurna BC", feet: 18100 },
+  { name: "A. Müller", trek: "Inca Trail", feet: 17900 },
+  { name: "E. Chen", trek: "Everest BC", feet: 15400 },
+  { name: "R. Williams", trek: "Kilimanjaro", feet: 14200 },
+  { name: "D. Aris", trek: "Mont Blanc", feet: 12800 },
+  { name: "K. O'Brien", trek: "Annapurna BC", feet: 11500 },
+  { name: "H. Jensen", trek: "Inca Trail", feet: 9200 },
+].sort((a, b) => b.feet - a.feet);
+
+const teamTotal = trainees.reduce((sum, t) => sum + t.feet, 0);
+const max = trainees[0].feet;
+
+const railTicks = [
+  { label: "Leader", active: true },
+  { label: "Top 5" },
+  { label: "Cohort" },
+  { label: "Base" },
+];
+---
+
+<Layout
+  title="Summit Leaderboard | Sherpa Steps Trek Training"
+  description={description}
+  active="leaderboard"
+  railTicks={railTicks}
+  railCaption="Elevation gained"
+>
+  <main class="ml-0 pb-24 md:ml-[var(--spacing-rail)]">
+    <!-- Header (dark, telemetry feel) -->
+    <section class="bleed-rail relative overflow-hidden border-b border-line bg-dark text-on-dark">
+      <div class="topo-bg topo-bg-light absolute inset-0 opacity-[0.07]"></div>
+      <!-- Unit toggle (top-right of header) -->
+      <div class="relative z-10 mx-auto flex max-w-6xl items-center justify-end gap-3 px-4 pt-8 md:px-16">
+        <span class="label-caps text-accent-hi">Units</span>
+        <div class="inline-flex border border-white/25" role="group" aria-label="Elevation units">
+          <button id="u-ft" type="button" aria-pressed="true" class="unit-btn bg-accent px-5 py-2 font-display text-sm font-semibold uppercase tracking-[0.1em] text-white transition-colors">Feet</button>
+          <button id="u-m" type="button" aria-pressed="false" class="unit-btn border-l border-white/25 px-5 py-2 font-display text-sm font-semibold uppercase tracking-[0.1em] text-on-dark/70 transition-colors hover:text-white">Meters</button>
+        </div>
+      </div>
+      <div class="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-end gap-10 px-4 pb-20 pt-6 md:grid-cols-3 md:px-16">
+        <div class="md:col-span-2">
+          <span class="label-caps mb-4 block text-accent-hi">Current cohort · live</span>
+          <h1 class="font-display text-5xl font-extrabold uppercase leading-none text-white md:text-7xl">
+            Summit<br />Leaderboard
+          </h1>
+          <p class="mt-6 max-w-md text-lg text-on-dark/80">
+            Total elevation gained by active trainees — every floor on the stairwell and every
+            managed-effort climb in the altitude room, counted.
+          </p>
+        </div>
+        <div class="border border-white/15 bg-white/5 p-6">
+          <span class="label-caps mb-2 block text-accent-hi">Total cohort gain</span>
+          <div class="font-display text-5xl font-extrabold text-white" data-feet={teamTotal}>
+            <span class="num">{teamTotal.toLocaleString()}</span>
+          </div>
+          <span class="label-caps mt-1 block text-on-dark/60"><span class="unit-word">feet</span> climbed</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <div class="mx-auto max-w-6xl px-4 pt-12 md:px-16">
+      <div class="border border-line bg-surface">
+        <div class="hidden grid-cols-12 gap-4 border-b border-line px-6 py-4 md:grid">
+          <span class="label-caps col-span-1 text-muted">Rank</span>
+          <span class="label-caps col-span-3 text-muted">Trainee</span>
+          <span class="label-caps col-span-5 text-muted">Elevation progress</span>
+          <span class="label-caps col-span-3 text-right text-muted">Total gain</span>
+        </div>
+        {trainees.map((t, i) => (
+          <div class="group grid grid-cols-12 items-center gap-4 border-b border-line/60 px-6 py-5 transition-colors last:border-b-0 hover:bg-canvas">
+            <span class="col-span-2 font-display text-xl font-bold text-accent md:col-span-1">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div class="col-span-10 md:col-span-3">
+              <span class="block font-display text-lg font-bold uppercase text-primary">{t.name}</span>
+              <span class="label-caps text-muted">{t.trek}</span>
+            </div>
+            <div class="col-span-9 md:col-span-5">
+              <div class="h-1.5 w-full bg-line">
+                <div
+                  class="grow-bar h-full bg-accent transition-[filter] duration-300 group-hover:brightness-125"
+                  style={`width:${Math.round((t.feet / max) * 100)}%`}
+                ></div>
+              </div>
+            </div>
+            <span class="col-span-3 text-right font-display text-2xl font-bold text-primary" data-feet={t.feet}>
+              <span class="num">{t.feet.toLocaleString()}</span><span class="unit ml-1 text-sm text-muted">ft</span>
+            </span>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-center text-sm text-muted">
+        Telemetry updates each session. Want on the board?
+        <a href="/enroll" class="font-semibold text-accent underline-offset-4 hover:underline">Enroll in the 12-week program →</a>
+      </p>
+    </div>
+  </main>
+
+  <script>
+    // Feet / meters unit toggle. Bars stay relative; only the readouts convert.
+    const M = 0.3048;
+    const btnFt = document.getElementById("u-ft");
+    const btnM = document.getElementById("u-m");
+    function setUnit(unit: "ft" | "m") {
+      document.querySelectorAll<HTMLElement>("[data-feet]").forEach((el) => {
+        const feet = parseFloat(el.dataset.feet || "0");
+        const val = unit === "m" ? Math.round(feet * M) : feet;
+        const num = el.querySelector(".num");
+        if (num) num.textContent = val.toLocaleString();
+        const u = el.querySelector(".unit");
+        if (u) u.textContent = unit === "m" ? "m" : "ft";
+      });
+      document.querySelectorAll(".unit-word").forEach((el) => {
+        el.textContent = unit === "m" ? "meters" : "feet";
+      });
+      const setActive = (btn: HTMLElement | null, on: boolean) => {
+        if (!btn) return;
+        btn.setAttribute("aria-pressed", String(on));
+        btn.classList.toggle("bg-accent", on);
+        btn.classList.toggle("text-white", on);
+        btn.classList.toggle("text-on-dark/70", !on);
+      };
+      setActive(btnFt, unit === "ft");
+      setActive(btnM, unit === "m");
+    }
+    btnFt?.addEventListener("click", () => setUnit("ft"));
+    btnM?.addEventListener("click", () => setUnit("m"));
+  </script>
+</Layout>

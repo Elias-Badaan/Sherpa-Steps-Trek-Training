@@ -1,0 +1,240 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getProgramPhases, getReviews } from "../lib/cms";
+
+const phases = await getProgramPhases();
+const reviews = await getReviews();
+
+const description =
+  "Everest Base Camp training in Houston. A 12-week program of weighted-pack stairwell intervals and a hypoxic altitude room that prepares sea-level flatlanders for high-altitude treks.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ExerciseGym",
+  name: "Sherpa Steps Trek Training",
+  description,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Houston",
+    addressRegion: "TX",
+    addressCountry: "US",
+  },
+  priceRange: "$$",
+  foundingDate: "2019",
+  openingHours: ["Mo-Fr 05:30-21:00", "Sa 07:00-14:00"],
+  sameAs: ["https://instagram.com/sherpasteps.houston", "https://instagram.com/summitwall"],
+};
+---
+
+<Layout
+  title="Everest Base Camp Training in Houston | Sherpa Steps Trek Training"
+  description={description}
+  active="home"
+  jsonLd={jsonLd}
+  preloadImage="/images/hero-stairwell.webp"
+>
+  <main class="ml-0 md:ml-[var(--spacing-rail)]">
+    <!-- HERO -->
+    <section class="bleed-rail relative overflow-hidden border-b border-line bg-dark text-on-dark">
+      <img
+        src="/images/hero-stairwell.webp"
+        alt="A trekker shouldering a weighted pack in a Houston parking-garage stairwell, shot in grainy black and white"
+        width="1600"
+        height="893"
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover opacity-35 [filter:grayscale(0.4)]"
+      />
+      <div class="absolute inset-0 bg-dark/70"></div>
+      <div class="topo-bg topo-bg-light absolute inset-0 opacity-[0.07]"></div>
+      <div class="relative z-10 grid min-h-[80vh] grid-cols-1 lg:grid-cols-2">
+        <div class="flex flex-col justify-end border-b border-white/10 p-4 md:p-16 lg:border-b-0 lg:border-r">
+          <span class="label-caps mb-4 text-accent-hi">Houston, Texas · Est. 2019</span>
+          <p class="mb-6 max-w-md text-lg text-on-dark/80">
+            Six feet above sea level, on a flat coastal plain. The mountain doesn't care. We make
+            sure your legs and lungs do.
+          </p>
+          <div class="flex items-end gap-3">
+            <span class="font-display text-2xl font-bold text-accent-hi">6 ft</span>
+            <span class="label-caps pb-1 text-on-dark/50">Sea-level start</span>
+          </div>
+        </div>
+        <div class="flex flex-col justify-center p-4 md:p-16">
+          <span class="label-caps mb-2 text-accent-hi">Everest Base Camp track · Target</span>
+          <div class="flex items-start gap-2">
+            <span
+              id="elev-count"
+              class="font-display text-[88px] font-extrabold leading-[0.8] tracking-tight text-white md:text-[160px]"
+              >17,598</span
+            >
+            <span class="mt-3 font-display text-2xl font-bold text-accent-hi">ft</span>
+          </div>
+          <div class="my-4 h-0.5 w-3/4 bg-accent"></div>
+          <h1 class="max-w-md font-display text-4xl font-bold uppercase text-white md:text-5xl">
+            Houston is six feet above sea level. We train you for 17,598.
+          </h1>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="/enroll"
+              class="bg-accent px-10 py-4 text-center font-display text-sm font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-[var(--color-accent-hi)] hover:text-dark active:scale-95"
+              >Enroll in the 12-week program</a
+            >
+            <a
+              href="/program"
+              class="border-2 border-accent-hi px-10 py-4 text-center font-display text-sm font-semibold uppercase tracking-[0.1em] text-accent-hi transition hover:bg-accent-hi hover:text-dark"
+              >See the 12-week plan</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="mx-auto max-w-5xl px-4 md:px-16">
+      <!-- THE PROBLEM -->
+      <section class="band-reveal border-b border-line py-24">
+        <span class="label-caps mb-4 block text-accent">The problem</span>
+        <h2 class="max-w-3xl font-display text-4xl font-bold uppercase leading-tight text-primary md:text-5xl">
+          The mountain doesn't care how many spin classes you did.
+        </h2>
+        <p class="mt-6 max-w-2xl text-lg text-muted">
+          It cares about your legs, your lungs, and the load on your back. Sea-level cardio builds a
+          heart for sea level. We build a body for thin air, under load, on stairs that don't end —
+          Everest Base Camp training in Houston, built for flatlanders.
+        </p>
+      </section>
+
+      <!-- THE THREE PHASES (CMS) -->
+      <section class="band-reveal border-b border-line py-24">
+        <span class="label-caps mb-4 block text-accent">The program</span>
+        <h2 class="mb-12 font-display text-4xl font-bold uppercase text-primary md:text-5xl">
+          Twelve weeks. Three phases. Base, load, then thin air.
+        </h2>
+        <div class="grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-3">
+          {phases.map((p, i) => (
+            <div class:list={["p-8 transition-colors", i === 2 ? "bg-primary text-on-dark hover:bg-[var(--color-primary-hi)]" : "bg-surface hover:bg-canvas"]}>
+              <span class:list={["label-caps mb-4 block", i === 2 ? "text-accent-hi" : "text-accent"]}>
+                Phase {String(i + 1).padStart(2, "0")} · {p.weeks}
+              </span>
+              <h3 class:list={["mb-3 font-display text-2xl font-bold uppercase", i === 2 ? "text-white" : "text-primary"]}>
+                {p.phaseName}
+              </h3>
+              <p class:list={[i === 2 ? "text-on-dark/80" : "text-muted"]}>{p.focus}</p>
+            </div>
+          ))}
+        </div>
+        <a href="/program" class="label-caps mt-8 inline-block border-b-2 border-accent pb-1 text-accent transition hover:border-primary hover:text-primary">
+          See the full week-by-week plan →
+        </a>
+      </section>
+
+      <!-- ALTITUDE ROOM -->
+      <section class="band-reveal grid grid-cols-1 items-center gap-12 border-b border-line py-24 lg:grid-cols-2">
+        <div>
+          <span class="label-caps mb-4 block text-accent">The altitude room</span>
+          <h2 class="mb-6 font-display text-4xl font-bold uppercase text-primary md:text-5xl">
+            We dial the oxygen down to 4,000 meters in a room off I-10.
+          </h2>
+          <p class="mb-8 text-lg text-muted">
+            Your body starts adapting before your flight does — more red blood cells, steadier
+            breathing, fewer surprises at altitude. It's not a guarantee against altitude sickness.
+            Nothing is. But graduates arrive steadier.
+          </p>
+          <a href="/altitude-room" class="label-caps border-b-2 border-accent pb-1 text-accent transition hover:border-primary hover:text-primary">
+            How the room works →
+          </a>
+        </div>
+        <div class="topo-bg-light relative overflow-hidden border border-primary bg-dark p-10 text-on-dark">
+          <span class="label-caps mb-2 block text-accent-hi">Simulated altitude</span>
+          <div class="font-display text-6xl font-extrabold text-white">4,000<span class="ml-2 text-2xl text-accent-hi">m</span></div>
+          <div class="my-6 h-px w-full bg-white/20"></div>
+          <span class="label-caps mb-2 block text-accent-hi">Effective oxygen</span>
+          <div class="font-display text-6xl font-extrabold text-white">~12<span class="ml-2 text-2xl text-accent-hi">% O₂</span></div>
+        </div>
+      </section>
+
+      <!-- SUMMIT WALL TEASER -->
+      <section class="band-reveal border-b border-line py-24 text-center">
+        <span class="label-caps mb-4 block text-accent">The summit wall</span>
+        <h2 class="mx-auto mb-6 max-w-3xl font-display text-4xl font-bold uppercase text-primary md:text-5xl">
+          An entire wall of people who stood on top.
+        </h2>
+        <p class="mx-auto mb-8 max-w-2xl text-lg text-muted">
+          Every photo started on a stairwell in Houston. The wall is the whole pitch now.
+        </p>
+        <a href="/summit-wall" class="inline-block bg-primary px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-[var(--color-primary-hi)] active:scale-95">
+          See the Summit Wall
+        </a>
+      </section>
+
+      <!-- COACHES TEASER -->
+      <section class="band-reveal border-b border-line py-24">
+        <span class="label-caps mb-4 block text-accent">The coaches</span>
+        <h2 class="mb-6 max-w-3xl font-display text-4xl font-bold uppercase text-primary md:text-5xl">
+          Coached by people who have been short of breath at altitude — and lived to plan your training.
+        </h2>
+        <a href="/coaches" class="label-caps border-b-2 border-accent pb-1 text-accent transition hover:border-primary hover:text-primary">
+          Meet the coaches &amp; the method →
+        </a>
+      </section>
+
+      <!-- REVIEWS (CMS) -->
+      <section class="band-reveal border-b border-line py-24">
+        <span class="label-caps mb-4 block text-accent">Graduate proof</span>
+        <h2 class="mb-12 font-display text-4xl font-bold uppercase text-primary md:text-5xl">
+          What they couldn't do in week one, and where they stood by the end.
+        </h2>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {reviews.map((r) => (
+            <figure class="lift flex flex-col border border-line bg-surface p-8">
+              <blockquote class="mb-6 text-lg italic text-ink">“{r.quote}”</blockquote>
+              <figcaption class="mt-auto border-t border-line/60 pt-4">
+                <span class="block font-display text-xl font-bold uppercase text-primary">{r.name}</span>
+                <span class="label-caps text-muted">{r.detail}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    </div>
+
+    <!-- ENROLL BAND -->
+    <section class="bleed-rail relative overflow-hidden bg-primary text-on-dark">
+      <div class="relative z-10 mx-auto flex max-w-5xl flex-col items-center justify-between gap-8 px-4 py-20 md:flex-row md:px-16">
+        <div class="max-w-xl">
+          <h2 class="mb-4 font-display text-4xl font-bold uppercase text-white md:text-5xl">
+            Twelve weeks is the runway.
+          </h2>
+          <p class="text-lg text-on-dark/80">
+            Tell us your departure date and we'll back-plan the training. No commitment yet — we'll
+            be honest about whether twelve weeks is enough.
+          </p>
+        </div>
+        <a href="/enroll" class="whitespace-nowrap bg-accent px-10 py-4 font-display text-sm font-semibold uppercase tracking-[0.1em] text-white transition hover:bg-[var(--color-accent-hi)] hover:text-dark active:scale-95">
+          Enroll in the 12-week program
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Hero count-up 6 → 17,598 over 900ms; reduced-motion shows the final value.
+    const el = document.getElementById("elev-count");
+    if (el) {
+      const target = 17598;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        el.textContent = target.toLocaleString();
+      } else {
+        const start = 6, dur = 900;
+        let t0: number | null = null;
+        const step = (ts: number) => {
+          if (t0 === null) t0 = ts;
+          const p = Math.min((ts - t0) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(start + (target - start) * eased).toLocaleString();
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }
+    }
+  </script>
+</Layout>

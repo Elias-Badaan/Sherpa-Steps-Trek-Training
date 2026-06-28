@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Summit Wall | Sherpa Steps</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;600;700;800&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#89d0f1",
+                    "on-surface": "#191c1f",
+                    "on-surface-variant": "#46464d",
+                    "tertiary": "#171928",
+                    "on-error-container": "#93000a",
+                    "secondary": "#0c6684",
+                    "primary-container": "#2b2d42",
+                    "tertiary-container": "#2b2d3e",
+                    "on-background": "#191c1f",
+                    "primary-fixed": "#e0e0fc",
+                    "on-secondary-fixed": "#001f2a",
+                    "tertiary-fixed-dim": "#c4c5db",
+                    "surface-tint": "#5b5d74",
+                    "surface-container-high": "#e6e8ec",
+                    "surface-variant": "#e0e2e6",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#bfe9ff",
+                    "on-tertiary-container": "#9394a9",
+                    "tertiary-fixed": "#e1e1f7",
+                    "primary-fixed-dim": "#c4c4df",
+                    "surface-container-highest": "#e0e2e6",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f7f9fd",
+                    "on-secondary": "#ffffff",
+                    "outline": "#77767d",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#95dbfd",
+                    "on-tertiary-fixed": "#181a2a",
+                    "inverse-primary": "#c4c4df",
+                    "inverse-on-surface": "#eff1f5",
+                    "on-primary-fixed": "#181a2e",
+                    "surface-dim": "#d8dade",
+                    "primary": "#16182c",
+                    "on-primary-container": "#9394ae",
+                    "on-secondary-fixed-variant": "#004d65",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#444657",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2d3134",
+                    "outline-variant": "#c7c5cd",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#f7f9fd",
+                    "surface-container": "#eceef2",
+                    "on-secondary-container": "#00617f",
+                    "on-primary-fixed-variant": "#43455b",
+                    "surface-on-tertiary": "#ffffff",
+                    "surface": "#f7f9fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "rail-width": "48px",
+                    "section-gap": "120px"
+            },
+            "fontFamily": {
+                    "elevation-numeral": ["Saira Condensed"],
+                    "body-lg": ["\"Source Sans 3\""],
+                    "body-bold": ["\"Source Sans 3\""],
+                    "headline-md": ["Saira Condensed"],
+                    "headline-lg": ["Saira Condensed"],
+                    "headline-lg-mobile": ["Saira Condensed"],
+                    "display-xl": ["Saira Condensed"],
+                    "body-md": ["\"Source Sans 3\""],
+                    "label-caps": ["Saira Condensed"]
+            },
+            "fontSize": {
+                    "elevation-numeral": ["12px", {"lineHeight": "12px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-bold": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "28px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "44px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["36px", {"lineHeight": "36px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "display-xl": ["72px", {"lineHeight": "64px", "letterSpacing": "0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-caps": ["14px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .topo-bg {
+            background-image: radial-gradient(circle at 2px 2px, rgba(119, 118, 125, 0.1) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .elevation-rail-line {
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, #c7c5cd 10%, #c7c5cd 90%, transparent);
+        }
+        .desaturate-hover:hover img {
+            filter: grayscale(0%);
+            transition: filter 0.5s ease;
+        }
+        .desaturate-hover img {
+            filter: grayscale(100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container topo-bg overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-on-surface border-b border-outline-variant dark:border-outline docked full-width top-0 z-50 fixed w-full">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-full">
+<div class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary dark:text-primary-fixed uppercase tracking-tighter">
+                Sherpa Steps
+            </div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps uppercase" href="#">Program</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps uppercase" href="#">Altitude Room</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-bold border-b-2 border-secondary pb-1 font-label-caps text-label-caps uppercase" href="#">Summit Wall</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps uppercase" href="#">Coaches</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-label-caps text-label-caps uppercase" href="#">FAQ</a>
+</nav>
+<button class="bg-primary-container text-on-primary font-label-caps text-label-caps px-6 py-2 uppercase tracking-widest hover:bg-primary transition-all active:scale-95">
+                Enroll
+            </button>
+</div>
+</header>
+<!-- SideNavBar (Elevation Rail) -->
+<aside class="fixed left-0 top-0 w-rail-width h-full flex flex-col items-center py-section-gap z-40 border-r border-outline-variant/30 bg-transparent hidden md:flex">
+<div class="flex flex-col items-center gap-12 h-full justify-center">
+<div class="flex flex-col items-center gap-2">
+<span class="font-elevation-numeral text-elevation-numeral text-outline opacity-50 rotate-90 origin-center whitespace-nowrap">3,000m</span>
+<div class="w-4 h-[1px] bg-outline/30"></div>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="font-elevation-numeral text-elevation-numeral text-outline opacity-50 rotate-90 origin-center whitespace-nowrap">5,000m</span>
+<div class="w-4 h-[1px] bg-outline/30"></div>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="font-elevation-numeral text-elevation-numeral text-outline opacity-50 rotate-90 origin-center whitespace-nowrap">6,000m</span>
+<div class="w-4 h-[1px] bg-outline/30"></div>
+</div>
+<div class="flex flex-col items-center gap-2 scale-110">
+<span class="font-elevation-numeral text-elevation-numeral text-primary dark:text-primary-fixed font-bold rotate-90 origin-center whitespace-nowrap">8,848m</span>
+<div class="w-6 h-[2px] bg-primary"></div>
+<span class="material-symbols-outlined text-primary" data-icon="mountain_flag">mountain_flag</span>
+</div>
+</div>
+</aside>
+<main class="ml-0 md:ml-rail-width pt-32 pb-24 px-margin-mobile md:px-margin-desktop">
+<!-- Header Section -->
+<section class="mb-section-gap max-w-4xl">
+<div class="flex items-center gap-4 mb-4">
+<div class="h-[1px] w-12 bg-primary"></div>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Alumni Validation</span>
+</div>
+<h1 class="font-display-xl text-display-xl uppercase text-primary mb-6 leading-none">The Summit Wall</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl border-l-4 border-outline-variant pl-6">
+                A rigorous chronicle of those who committed to the breathlessness of the thin air. These graduates did not just train; they transformed their physiology and mindset to stand where few ever do.
+            </p>
+</section>
+<!-- The Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-0 flex flex-col group desaturate-hover transition-all duration-500 hover:border-primary">
+<div class="relative overflow-hidden aspect-[3/4]">
+<img class="w-full h-full object-cover" data-alt="A desaturated, high-contrast black and white photograph of a female trekker standing triumphantly at a mountain summit, wearing technical alpine gear and goggles, with jagged snow-capped peaks stretching into the hazy distance under a bright sky. The aesthetic is documentary-style, professional and sharp, reflecting a high-precision editorial design for an elite training platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs_e7aXLsmv7pbwy3rEy1BYP95ha0-yMy7X1DonnEetAuKEo5fRdN059qDGKgGJOakzvuAvEf11lJxgZYyQIlj1YjLQ42LR4gVRYdvqfLNGrmLfpNCFt5FP7epBz5ND3GS7anhTJiUmoyo9XcFjtHSlMubudDGW2lk2vzlJG3stjB6jCU3D20z2kuM_5OR0xYr2pGagu94Q3FoX_mnyFcKp5iWPliEva8yjiPMrvBgFFdR14QeXvSmJP0MdTqjRo0lPwpzFpIz8P4"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary font-elevation-numeral text-elevation-numeral px-3 py-1">
+                        PHASE 04
+                    </div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary uppercase leading-tight">Sarah Chen</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Everest Base Camp</p>
+</div>
+<div class="text-right">
+<span class="font-elevation-numeral text-headline-md text-secondary">5,364m</span>
+</div>
+</div>
+<blockquote class="font-body-md text-body-md text-on-surface italic mt-auto pt-4 border-t border-outline-variant/30">
+                        "The altitude was a physical weight, but the Sherpa Steps breathing protocols made it manageable. My lungs felt twice their size."
+                    </blockquote>
+</div>
+</div>
+<!-- Card 2 (Special Featured Card - Summit Wall specific styling) -->
+<div class="bg-primary text-on-primary border border-primary p-0 flex flex-col group desaturate-hover transition-all duration-500 lg:col-span-1 xl:col-span-1">
+<div class="relative overflow-hidden aspect-[3/4]">
+<img class="w-full h-full object-cover opacity-90" data-alt="A gritty, cinematic black and white close-up of a male climber at the summit of Aconcagua, frost on his beard and a focused, intense expression in his eyes. The background shows the curvature of the earth against a dark sky. The lighting is harsh and dramatic, emphasizing the achievement and the thin-air atmosphere of high-altitude mountaineering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBwD4rgvQOei7KslmmVlWWSYKMEDhUy_zMC1MMIdJ39daaLLlRVRI8KUqluKHUBAL3FtLeIH1ZgyG6B_UlupkrDI0e6Bzx5se_amvZo-NIEnsQ_BdkFTiuxWCkRCyYV3CuQXc-XkG38GLWxRimuG8m4gM5-Ie5DG6qLFb_6aO1FZmJo8WX6wApHznSQdyYLME4JCQkP6Hjvc5i1te_SYoZ_rBWpaKq_CCwsLCnV4cHQxC4xNE7O9R4fV1uzxTv0QUJO-WYw14RZ5A"/>
+<div class="absolute bottom-4 right-4 bg-secondary text-on-secondary font-elevation-numeral text-elevation-numeral px-3 py-1">
+                        SUMMIT STATUS
+                    </div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-white uppercase leading-tight">Marcus Thorne</h3>
+<p class="font-label-caps text-label-caps text-primary-fixed-dim uppercase tracking-wider">Aconcagua</p>
+</div>
+<div class="text-right">
+<span class="font-elevation-numeral text-headline-md text-secondary-fixed">6,961m</span>
+</div>
+</div>
+<blockquote class="font-body-md text-body-md text-on-primary opacity-80 italic mt-auto pt-4 border-t border-on-primary/10">
+                        "Training at sea level for 7,000m seemed impossible until the simulated hypoxic sessions. I was the strongest in my group."
+                    </blockquote>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-0 flex flex-col group desaturate-hover transition-all duration-500 hover:border-primary">
+<div class="relative overflow-hidden aspect-[3/4]">
+<img class="w-full h-full object-cover" data-alt="A black and white wide shot of a group of trekkers silhouetted against a mountain ridge at dawn. One central figure, Elena Rodriguez, is raising her ice axe in victory. The photography is sharp with deep blacks and bright whites, evoking a sense of monumental physical achievement and disciplined preparation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3beE92pgVG9OSuAnxlTlL5Z0CMMhHfzYMhGuksxJbHWcLxO2aU5myUegYH6WhMXRy1qXv6dfjKp-gvxdBmvWbMX_wBIo9LPbnd-TMIrTWdq5vNXVshX8rLUDeXsQ60oai-5bgXgwzAiy7VJo5hjHE-ck55E5RxBq84stp1EXYbi5jnEX3d8hAVkTPqKMe5rpe8UJeXePxSnG_1oJu_iOtoKdlqVpHpweA_HHkUJq1WitRO8AHcCj-YWGcTEN93VRQ8al79goodzg"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary uppercase leading-tight">Elena Rodriguez</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Kilimanjaro</p>
+</div>
+<div class="text-right">
+<span class="font-elevation-numeral text-headline-md text-secondary">5,895m</span>
+</div>
+</div>
+<blockquote class="font-body-md text-body-md text-on-surface italic mt-auto pt-4 border-t border-outline-variant/30">
+                        "The mental endurance modules were just as vital as the leg work. When the summit felt far, the Sherpa mindset kicked in."
+                    </blockquote>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-0 flex flex-col group desaturate-hover transition-all duration-500 hover:border-primary">
+<div class="relative overflow-hidden aspect-[3/4]">
+<img class="w-full h-full object-cover" data-alt="A portrait of a male trekker in desaturated tones, sitting on a rock at the summit of Island Peak. He is holding a small flag. The lighting is natural and bright, showing the texture of his technical windbreaker and the rocky terrain. The background is a breathtaking vista of the Himalayas in soft focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEcMejPyzcKY5uLzxuQSSRN4zgPGIhB-F60e70HOge9kE1SonniTuwBHT93ZfBaKrN5Ss3QA5APj0t4b3HwWQZ3m_x4kUlaVwUhVA03YSXIXSAoChJzbzU_ggiJmVynXS28En5bcGUeS2DUVcGxJBBKFIVTfER2KZmfJ97VE6bATFMheU4imks828NPZBK_pcDX8CexNrsQaQHhT360h6RLRGxXuCR9UshHWo_aPG9CTMBc00RMr6HQQRx1229La6dV7rMqoUPnN4"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary uppercase leading-tight">David Miller</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Island Peak</p>
+</div>
+<div class="text-right">
+<span class="font-elevation-numeral text-headline-md text-secondary">6,189m</span>
+</div>
+</div>
+<blockquote class="font-body-md text-body-md text-on-surface italic mt-auto pt-4 border-t border-outline-variant/30">
+                        "Documentary-style training led to documentary-style success. No fluff, just results. Sherpa Steps is the industry standard."
+                    </blockquote>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-0 flex flex-col group desaturate-hover transition-all duration-500 hover:border-primary">
+<div class="relative overflow-hidden aspect-[3/4]">
+<img class="w-full h-full object-cover" data-alt="A monochrome image of a female climber, Priya Kapoor, standing next to a summit sign at Annapurna Circuit. The wind is blowing her hair, and her expression is one of calm accomplishment. The image has a grainy, film-like texture and high tonal range, fitting the methodical and professional brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOyONzolQgsILhKob46ojCaFAbf_nnRdit2DofhqTOQlWQ0DuLjWCeuWXbQHD-Jc1Z13gIbbe0gGR_3AE5ouIxoV5AGcUvolUT6-9OWRKI0RfHKH_2dv-ukniM6m5iO6AAW3k_k3sZKfzejJjvpR67Hr1fqjCnPPZvU9W1e8cr0ECNlg7l6mp2VicMMnsRbgpxoLfy3XdQwqtUbw1Eqn-ykM59diNNroVtDNJ1yu-AMay0EML6q81Zsfdu6p_eFCGMnuUw7rS2TNk"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary uppercase leading-tight">Priya Kapoor</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Annapurna Circuit</p>
+</div>
+<div class="text-right">
+<span class="font-elevation-numeral text-headline-md text-secondary">5,416m</span>
+</div>
+</div>
+<blockquote class="font-body-md text-body-md text-on-surface italic mt-auto pt-4 border-t border-outline-variant/30">
+                        "The program's focus on eccentric loading for the descents saved my knees. I finished the trek with zero pain."
+                    </blockquote>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-0 flex flex-col group desaturate-hover transition-all duration-500 hover:border-primary">
+<div class="relative overflow-hidden aspect-[3/4]">
+<img class="w-full h-full object-cover" data-alt="A desaturated photo of an older male trekker, James Wilson, standing at the summit of Mont Blanc. He is smiling widely, with dramatic mountain peaks and clouds below him. The visual style is crisp and clear, emphasizing the aspirational yet disciplined nature of the trekking preparation platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbztjOMYywtYP0psQrqlafRKToX7VUz8efm3cvJ48yIWHAG5I-cV_PIH7yHc6orP4mlCCwJeLWl4OBicrDatFoqYlArahOs2wSWILz2XoVloPTIPsehQPibzhuCrwQnTXeqDRp43S0gWfdUjJvNrxVv_OeP74_ROWrPfkABzjRNSJoJHdlM0rhML69JBVpJMdBulSaEU5U8AWTAvOG24Yc5mImNCfqsbxaiOC1yGAklrEqJ9QlJCcOaxkYJ0ij_vkwWSf5ozkXlL4"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary uppercase leading-tight">James Wilson</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Mont Blanc</p>
+</div>
+<div class="text-right">
+<span class="font-elevation-numeral text-headline-md text-secondary">4,808m</span>
+</div>
+</div>
+<blockquote class="font-body-md text-body-md text-on-surface italic mt-auto pt-4 border-t border-outline-variant/30">
+                        "At 58, I thought my summit days were over. The methodical approach here proved that preparation outweighs age every time."
+                    </blockquote>
+</div>
+</div>
+<!-- Card 7 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-0 flex flex-col group desaturate-hover transition-all duration-500 hover:border-primary">
+<div class="relative overflow-hidden aspect-[3/4]">
+<img class="w-full h-full object-cover" data-alt="A minimalist black and white photograph of a lone trekker, Yuki Sato, walking along a razor-sharp mountain ridge. The perspective is from behind, showing the vastness of the landscape. The mood is serene and disciplined, highlighting the methodical structure of the Sherpa Steps training regimen." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByRi_SgHQQfY9FKsq2KEAuFb_ACdGUGgRt0pP9pG8tvTuQFEzeE76dlNWgxaBYVdcevXsYMInIxM-uvrkea0OLmba-5SW7ysAAuz37mdlpjNB0pXhmaDopiV15u2UaKU5fRT7Br3HmQxiUAme8ZfIImHzN3aG75QLIbTPzdfsvUGDHYtD8RqbKPjKO1kef_8B2jm6l8RKnoLzvGutP4g7if6f0n9bP_H99Xz3-oLscxsaeFLJ8Md2b47PD9n4C54DZ2vVWoqHyWUY"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary uppercase leading-tight">Yuki Sato</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Mount Fuji</p>
+</div>
+<div class="text-right">
+<span class="font-elevation-numeral text-headline-md text-secondary">3,776m</span>
+</div>
+</div>
+<blockquote class="font-body-md text-body-md text-on-surface italic mt-auto pt-4 border-t border-outline-variant/30">
+                        "Efficiency in movement is what I learned. I summited faster and felt fresher than ever before."
+                    </blockquote>
+</div>
+</div>
+<!-- Card 8 -->
+<div class="bg-surface-container-lowest border border-outline-variant p-0 flex flex-col group desaturate-hover transition-all duration-500 hover:border-primary">
+<div class="relative overflow-hidden aspect-[3/4]">
+<img class="w-full h-full object-cover" data-alt="A high-precision editorial black and white photo of a female trekker, Clara Vo, adjusting her pack at the base of a massive glacier. The lighting is high-key and bright, with subtle topographic-like textures in the snow. The image captures the breathless intensity and professional preparation of a high-altitude expedition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjQZvjoUUUtwJWU9t4PeeA0eio25tzEb83mR_r9IF_xsXYJCRG0Q95xBRduvNk-j6PhO5OnNHOU19StB_ciA4N3LfNd17YcP5Qz5zmmaG1V6yIRBlga49FruZZcrIKqjBdU0pwTKXTUXnpu9JJ7sMPj7rjrtqy5LqApMWi1rD8gI6SjZnzrySlPc2UyKn6bmlLaMZ0oxLaHXTPKIZZ9UypbAN7ILmiSIW7kKiF-hat_e3qXMA8jJiKCYUzmseWwE2E-GVjEj_leaI"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary uppercase leading-tight">Clara Vo</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Lobuche East</p>
+</div>
+<div class="text-right">
+<span class="font-elevation-numeral text-headline-md text-secondary">6,119m</span>
+</div>
+</div>
+<blockquote class="font-body-md text-body-md text-on-surface italic mt-auto pt-4 border-t border-outline-variant/30">
+                        "The Summit Wall was my motivation during late-night treadmill sessions. Now I am a part of it. The system works."
+                    </blockquote>
+</div>
+</div>
+</section>
+<!-- Technical Specs / Data Integrity Section -->
+<section class="mt-section-gap border-t border-outline-variant pt-12 flex flex-col md:flex-row justify-between items-start gap-12">
+<div class="max-w-sm">
+<h4 class="font-label-caps text-label-caps text-primary uppercase mb-4 tracking-tighter">Validation Metrics</h4>
+<div class="space-y-4">
+<div class="flex justify-between border-b border-outline-variant/20 pb-2">
+<span class="font-body-md text-on-surface-variant">Graduation Rate</span>
+<span class="font-elevation-numeral text-primary">94.2%</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/20 pb-2">
+<span class="font-body-md text-on-surface-variant">Avg. Summit Elevation</span>
+<span class="font-elevation-numeral text-primary">5,420m</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/20 pb-2">
+<span class="font-body-md text-on-surface-variant">Training Compliance</span>
+<span class="font-elevation-numeral text-primary">88.0%</span>
+</div>
+</div>
+</div>
+<div class="flex-1 max-w-2xl bg-surface-container p-8 border-l-2 border-secondary">
+<h4 class="font-headline-md text-headline-md text-primary uppercase mb-2">The Sherpa Protocol</h4>
+<p class="font-body-md text-on-surface-variant">
+                    Every alumnus featured on the Summit Wall has completed a minimum of 16 weeks of progressive physiological adaptation. This includes Zone 2 aerobic base building, eccentric strength loading, and CO2 tolerance training. Success is not accidental; it is the inevitable outcome of precision preparation.
+                </p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-tertiary text-on-primary dark:text-on-tertiary full-width">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-12 w-full">
+<div class="col-span-1 md:col-span-1">
+<div class="font-headline-md text-headline-md text-primary-fixed uppercase mb-4">Sherpa Steps</div>
+<p class="font-body-md text-on-primary-container text-sm">
+                    Methodical preparation for high-altitude success. Building the physical and mental resilience required for the world's highest peaks.
+                </p>
+</div>
+<div class="flex flex-col gap-2">
+<h5 class="font-label-caps text-label-caps text-secondary-container uppercase mb-2">Program</h5>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors text-sm" href="#">Curriculum</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors text-sm" href="#">Pricing</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors text-sm" href="#">Enrollment</a>
+</div>
+<div class="flex flex-col gap-2">
+<h5 class="font-label-caps text-label-caps text-secondary-container uppercase mb-2">Network</h5>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors text-sm underline decoration-on-primary/20 hover:decoration-secondary-fixed" href="#">Instagram</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors text-sm underline decoration-on-primary/20 hover:decoration-secondary-fixed" href="#">YouTube</a>
+<a class="text-on-primary-container hover:text-secondary-fixed transition-colors text-sm underline decoration-on-primary/20 hover:decoration-secondary-fixed" href="#">Facebook</a>
+</div>
+<div class="flex flex-col gap-2">
+<h5 class="font-label-caps text-label-caps text-secondary-container uppercase mb-2">Location</h5>
+<p class="font-body-md text-on-primary-container text-sm">© 2024 Sherpa Steps Trek Training.<br/>Houston, TX.</p>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile only sticky bar) -->
+<div class="fixed bottom-0 left-0 w-full z-50 flex items-center h-16 bg-primary dark:bg-tertiary border-t-2 border-secondary md:hidden shadow-lg">
+<div class="absolute top-0 left-0 w-full h-[1px] bg-secondary-container opacity-30"></div>
+<a class="bg-secondary text-on-secondary w-full py-4 flex justify-center items-center gap-2 hover:bg-secondary-container transition-colors font-label-caps text-label-caps uppercase" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="edit_note">edit_note</span>
+            Enroll Now
+        </a>
+</div>
+<script>
+        // Subtle micro-interaction for the elevation rail ticks
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            const railElements = document.querySelectorAll('.font-elevation-numeral');
+            railElements.forEach((el, index) => {
+                const trigger = index * 400;
+                if (scrollPos > trigger) {
+                    el.classList.add('text-secondary', 'opacity-100');
+                    el.classList.remove('text-outline', 'opacity-50');
+                } else {
+                    el.classList.remove('text-secondary', 'opacity-100');
+                    el.classList.add('text-outline', 'opacity-50');
+                }
+            });
+        });
+    </script>
+</body></html>
